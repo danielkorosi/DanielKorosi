@@ -1,2 +1,2 @@
 # DanielKorosi
-[link to the repository](https://github.com/greenfox-academy/DanielKorosi)
+[Zodiac](https://github.com/greenfox-academy/zodiac-syllabus)
