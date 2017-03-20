@@ -1,0 +1,37 @@
+p {
+  font-size: 16px;
+  font-family: courier;
+  color: white;
+  border: 20px;
+  width: 264px;
+  padding: 20px;
+  margin: 8px;
+  text-align: center;
+}
+
+.orange {
+  background-color: #fd644e;
+  background-image: url(duck.png);
+  background-position: left;
+  position: relative;
+  background-size: 20%;
+  background-repeat: no-repeat;
+}
+
+.purple {
+  background-color: #633878;
+  background-image: url(duck.png);
+  background-position: center;
+  position: relative;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.grey {
+  background-color: #808080;
+  background-image: url(duck.png);
+  position: relative;
+  background-position: bottom right;
+  background-size: 25%;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+}
+
+#content {
+  background:#fff;
+  width:1000px;
+  margin:0px;
+  height: 100%;
+}
+
+.box {
+  margin:16px;
+  border:5px solid;
+  padding: 16px;
+  width:368px;
+  height:117px;
+  background-color: #1c91a0;
+  border-color:#82ce95;
+}
+
+body {
+  font-size: 36px;
+  color: #075363;
+  font-family: Arial;
+}

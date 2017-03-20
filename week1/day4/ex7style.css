@@ -1,0 +1,17 @@
+p {
+  color: blue;
+  background-color: yellow;
+}
+
+.asteroidb329big {
+  color: blue;
+}
+
+.container div {
+  border: 2px solid green;
+}
+
+body {
+  width: 116px;
+  font-size: 7px;
+}

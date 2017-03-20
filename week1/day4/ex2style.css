@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+}
+
+.bigbox {
+  width: 348px;
+  height: 512px;
+  margin: 15px;
+  border:15px solid #4688F1;
+}
+
+div div {
+  width: 348px;
+  height: 78px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.box1 {
+  background-color: #e47778;
+}
+
+.box2 {
+  background-color: #f2ee6d;
+}
+
+.box3 {
+  background-color: #abe6e5;
+}
+
+.box4 {
+  background-color: #7794e1;
+}
+
+body {
+  font-size: 36px;
+  color: #FFFFFF;
+  font-family: Arial;
+}
