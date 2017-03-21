@@ -14,9 +14,9 @@
 # If no girls are coming, regardless the count of the people
 
 print ("Add the number of girls")
-b = int(input())
-print ("Add the number of boys")
 g = int(input())
+print ("Add the number of boys")
+b = int(input())
 
 if g==b and g+b>20 and g!=0:
     print ("The party is exellent!")
