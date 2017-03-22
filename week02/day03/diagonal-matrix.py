@@ -8,10 +8,13 @@
 #
 # - Print this two dimensional list to the output
 
-matrix = [[ 0 for i in range(4)] for j in range(4)]
+x = 4
+matrix = [[ 0 for i in range(x)] for j in range(x)]
 for i in range(4):
     for j in range(4):
         if i == j:
             matrix[i][j] = 1
-print(matrix)
+for i in matrix:
+    print(i)
+
 #matrix[0][0]=1
