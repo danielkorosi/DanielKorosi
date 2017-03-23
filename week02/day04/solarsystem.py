@@ -3,7 +3,10 @@
 
 planetList = ["Mercury","Venus","Earth","Mars","Jupiter","Uranus","Neptune"]
 
-planetList.insert(5, "Saturn")
+planetList.append(planetList[6])
+planetList[6] = planetList[5]
+planetList[5] = "Saturn"
+
 print(planetList)
 
-#short solution woth built-in function
+#a step-by-step solution
