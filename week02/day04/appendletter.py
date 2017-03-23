@@ -2,7 +2,7 @@
 
 far = ["kuty", "macsk", "kacs", "rok", "halacsk"]
 
-for i in range (len(far)):
+for i in range(len(far)):
     far[i] = far[i]+ "a"
 
 print(far)
