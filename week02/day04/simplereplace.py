@@ -4,7 +4,7 @@
 
 example = "In a dishwasher far far away"
 
-g = example[5:16]
+#g = example[5:16]
 
 example = example.replace("dishwasher", "galaxy")
 print(example)
