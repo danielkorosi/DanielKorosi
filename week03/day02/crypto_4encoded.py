@@ -6,6 +6,8 @@ def decrypt(file_name):
     for i in text:
         if i == ' ':
             int_version += i
+        elif i == '\n':
+            int_version += '\n'
         else:
             i = ord(i)-1
             i = chr(i)
