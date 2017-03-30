@@ -2,5 +2,6 @@
 
 def counter(n):
     if n >= 1:
-        return n, counter(n-1)
+        print(n)
+        return counter(n-1)
 print(counter(4))
