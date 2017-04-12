@@ -1,31 +1,22 @@
 from tkinter import*
 from PIL import Image, ImageTk
 
-class Objects():
-    def __init__(self, background=''):
-        self.background = background
-    def draw_object(self, x, y):
-        self.opened_image = Image.open(self.background)
-        self.image = ImageTk.PhotoImage(self.opened_image)
-        canvas.create_image(x, y, image = self.image)
-
-class Wall(Objects):
-    def __init__(self, background = 'wall.png'):
-        super().__init__(background)
-
-class Floor(Objects):
-    def __init__(self, background = 'floor.png'):
-        super().__init__(background)
-
+root = Tk()
+canvas = Canvas(root, width=720, height=720)
+#image1 = Image.open('floor.png')
+#floor = ImageTk.PhotoImage(image1)
+#canvas.bind("<KeyPress>", move_hero)
+#canvas.pack()
 class Map():
     def __init__(self):
-        root = Tk()
-        canvas = Canvas(root, width=720, height=720)
-        canvas.pack()
-        root.mainloop()
-        self.floor = Floor()
-        self.wall = Wall()
-        self.sketch_map()
+        self.x = 36
+        self.y = 36
+        self.size = 72
+        self.img1 = Image.open('floor.png')
+        self.floor = ImageTk.PhotoImage(self.img1)
+        self.img2 = Image.open('wall.png')
+        self.wall = ImageTk.PhotoImage(self.img2)
+
     def sketch_map(self):
         self.map_template = [
         [0, 0 , 0 , 1 , 0 , 1 , 0 , 0 , 0 , 0],
@@ -39,20 +30,61 @@ class Map():
         [0, 1 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 0],
         [0, 0 , 0 , 1 , 0 , 1 , 1 , 0 , 0 , 0]
         ]
-        return self.map_template
 
-    def draw_map(self):
-        for y in range(len(self.map_template)):
-            for x in range(len(self.map_template[y])):
-                if self.map_template[x][y] == 1:
-                    self.wall.draw_object(y*72,x*72)
-                if self.map_template[x][y] == 0:
-                    self.floor.draw_object(x*72,y*72)
-#class Hero(Objects):
-    #super().__init__(background):
-    #    self.x = 0
-    #    self.y = 0
-    #    self.create_object(self.x,self.y)
+        for j in range(len(self.map_template)):
+            for i in range(len(self.map_template[j])):
+                if self.map_template[j][i] == 1:
+                    canvas.create_image(self.x+self.size*j, self.y+self.size*i, image = self.wall)
+                if self.map_template[j][i] == 0:
+                    canvas.create_image(self.x+self.size*j, self.y+self.size*i, image = self.floor)
 
-map = Map()
-map.draw_map()
+class Hero():
+    def __init__(self):
+        self.size = 72
+        self.down = Image.open('hero-down.png')
+        self.img_down = ImageTk.PhotoImage(self.down)
+        self.up = Image.open('hero-up.png')
+        self.img_up = ImageTk.PhotoImage(self.up)
+        self.right = Image.open('hero-right.png')
+        self.img_right = ImageTk.PhotoImage(self.right)
+        self.left = Image.open('hero-left.png')
+        self.img_left = ImageTk.PhotoImage(self.left)
+        self.hero = 0 #but whyyyy
+
+    def draw_hero(self, x = 0, y = 0):
+        self.char_x = x
+        self.char_y = y
+        self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = self.img_down, anchor = NW)
+
+    def move_hero(self, x, y, graphics):
+        if 0 <= x <= 9 or 0 <= y <= 9:
+            if m.map_template[j][i] == 0:
+                canvas.delete(self.hero)
+                self.char_x = x
+                self.char_y = y
+                self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = graphics, anchor = NW)
+
+m = Map()
+m.sketch_map()
+hero = Hero()
+hero.draw_hero()
+
+def on_key_press(e):
+    print(hero.char_x)
+    print(hero.char_y)
+
+    if e.keycode == 8320768:
+        hero.move_hero(hero.char_x, hero.char_y-1, hero.img_up)
+    elif e.keycode == 8255233:
+        hero.move_hero(hero.char_x, hero.char_y+1, hero.img_down)
+    elif e.keycode == 8189699:
+        hero.move_hero(hero.char_x+1, hero.char_y, hero.img_right)
+    elif e.keycode == 8124162:
+        hero.move_hero(hero.char_x-1, hero.char_y, hero.img_left)
+
+canvas.bind("<KeyPress>", on_key_press)
+canvas.focus_set()
+
+canvas.pack()
+
+root.mainloop()
