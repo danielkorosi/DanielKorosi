@@ -48,15 +48,17 @@ class Hero():
         self.left = Image.open('hero-left.png')
         self.img_left = ImageTk.PhotoImage(self.left)
         self.hero = 0 #but whyyyy
+        self.hero_x = 0
+        self.hero_y = 0
 
     def draw_hero(self, x = 0, y = 0):
         self.hero_x = x
         self.hero_y = y
         self.hero = canvas.create_image(self.hero_x * self.size, self.hero_y * self.size, image = self.img_down, anchor = NW)
 
-    def move_hero(self, x, y, graphics):
-        if 0 <= x <= 9 or 0 <= y <= 9:
-            if m.map_template[y][x] == 0:
+    def move_hero(self, x, y, graphics, map_template):
+        if 0 <= x <= 9 and 0 <= y <= 9:
+            if map_template[y][x] == 0:
                 canvas.delete(self.hero)
                 self.hero_x = x
                 self.hero_y = y
@@ -67,6 +69,8 @@ class Skeleton():
         self.size = 72
         self.img = Image.open('skeleton.png')
         self.skeleton_img = ImageTk.PhotoImage(self.img)
+        self.skel_x = 0
+        self.skel_y = 0
 
     def draw_skeleton(self, x, y):
         self.skel_x = x
@@ -85,44 +89,47 @@ class Boss():
         self.boss_y = y
         self.boss = canvas.create_image(self.boss_x * self.size, self.boss_y * self.size, image = self.boss_img, anchor = NW)
 
-    def move_boss(self, x, y):
-        if 0 <= x <= 9 or 0 <= y <= 9:
-            if m.map_template[y][x] == 0:
+    def move_boss(self, x, y, map_template):
+        if 0 <= x <= 9 and 0 <= y <= 9:
+            if map_template[y][x] == 0:
                 canvas.delete(self.boss)
                 self.boss_x = x
                 self.boss_y = y
                 self.boss = canvas.create_image(self.boss_x * self.size, self.boss_y * self.size, image = self.boss_img, anchor = NW)
 
-counter = 0
-def on_key_press(e):
-    global counter
-    if counter % 2 == 0:
-        boss.move_boss(boss.boss_x, boss.boss_y+1)
-    if e.keycode == 8320768:
-        counter += 1
-        hero.move_hero(hero.hero_x, hero.hero_y-1, hero.img_up)
-    elif e.keycode == 8255233:
-        counter += 1
-        hero.move_hero(hero.hero_x, hero.hero_y+1, hero.img_down)
-    elif e.keycode == 8189699:
-        counter += 1
-        hero.move_hero(hero.hero_x+1, hero.hero_y, hero.img_right)
-    elif e.keycode == 8124162:
-        counter += 1
-        hero.move_hero(hero.hero_x-1, hero.hero_y, hero.img_left)
+class GameLogic():
+    def __init__(self):
+        canvas.bind("<KeyPress>", self.on_key_press)
+        self.m = Map()
+        self.m.sketch_map()
+        self.hero = Hero()
+        self.hero.draw_hero()
+        self.skeleton = Skeleton() # three skeleton objects to be created, for later use
+        self.skeleton.draw_skeleton(8, 0)
+        self.skeleton.draw_skeleton(4, 0)
+        self.skeleton.draw_skeleton(4, 4)
+        self.boss = Boss()
+        self.boss.draw_boss(6,0)
+        self.counter = 1
 
-canvas.bind("<KeyPress>", on_key_press)
+    def on_key_press(self, e):
+        self.e = e
+        if self.counter % 2 == 0:
+            self.boss.move_boss(self.boss.boss_x, self.boss.boss_y+1, self.m.map_template)
+        if e.keycode == 8320768:
+            self.counter += 1
+            self.hero.move_hero(self.hero.hero_x, self.hero.hero_y-1, self.hero.img_up, self.m.map_template)
+        elif e.keycode == 8255233:
+            self.counter += 1
+            self.hero.move_hero(self.hero.hero_x, self.hero.hero_y+1, self.hero.img_down, self.m.map_template)
+        elif e.keycode == 8189699:
+            self.counter += 1
+            self.hero.move_hero(self.hero.hero_x+1, self.hero.hero_y, self.hero.img_right, self.m.map_template)
+        elif e.keycode == 8124162:
+            self.counter += 1
+            self.hero.move_hero(self.hero.hero_x-1, self.hero.hero_y, self.hero.img_left, self.m.map_template)
+
 canvas.focus_set()
-
-m = Map()
-m.sketch_map()
-hero = Hero()
-hero.draw_hero()
-skeleton = Skeleton()
-skeleton.draw_skeleton(8, 0)
-skeleton.draw_skeleton(4, 0)
-skeleton.draw_skeleton(4, 4)
-boss = Boss()
-boss.draw_boss(0,6)
+game = GameLogic()
 
 root.mainloop()
