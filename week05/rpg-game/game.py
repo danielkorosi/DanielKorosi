@@ -93,8 +93,9 @@ class Boss():
                 self.boss_y = y
                 self.boss = canvas.create_image(self.boss_x * self.size, self.boss_y * self.size, image = self.boss_img, anchor = NW)
 
+counter = 0
 def on_key_press(e):
-    counter = 0
+    global counter
     if counter % 2 == 0:
         boss.move_boss(boss.boss_x, boss.boss_y+1)
     if e.keycode == 8320768:
