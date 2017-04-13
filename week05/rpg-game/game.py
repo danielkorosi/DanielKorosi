@@ -3,10 +3,7 @@ from PIL import Image, ImageTk
 
 root = Tk()
 canvas = Canvas(root, width=720, height=720)
-#image1 = Image.open('floor.png')
-#floor = ImageTk.PhotoImage(image1)
-#canvas.bind("<KeyPress>", move_hero)
-#canvas.pack()
+
 class Map():
     def __init__(self):
         self.x = 36
@@ -31,12 +28,12 @@ class Map():
         [0, 0 , 0 , 1 , 0 , 1 , 1 , 0 , 0 , 0]
         ]
 
-        for j in range(len(self.map_template)):
-            for i in range(len(self.map_template[j])):
-                if self.map_template[j][i] == 1:
-                    canvas.create_image(self.x+self.size*j, self.y+self.size*i, image = self.wall)
-                if self.map_template[j][i] == 0:
-                    canvas.create_image(self.x+self.size*j, self.y+self.size*i, image = self.floor)
+        for y in range(len(self.map_template)):
+            for x in range(len(self.map_template[y])):
+                if self.map_template[y][x] == 1:
+                    canvas.create_image(self.x+self.size*x, self.y+self.size*y, image = self.wall)
+                if self.map_template[y][x] == 0:
+                    canvas.create_image(self.x+self.size*x, self.y+self.size*y, image = self.floor)
 
 class Hero():
     def __init__(self):
@@ -58,21 +55,46 @@ class Hero():
 
     def move_hero(self, x, y, graphics):
         if 0 <= x <= 9 or 0 <= y <= 9:
-            if m.map_template[j][i] == 0:
+            if m.map_template[y][x] == 0:
                 canvas.delete(self.hero)
                 self.char_x = x
                 self.char_y = y
                 self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = graphics, anchor = NW)
 
+class Skeleton():
+    def __init__(self):
+        self.size = 72
+        self.img = Image.open('skeleton.png')
+        self.skeleton_img = ImageTk.PhotoImage(self.img)
+
+    def draw_skeleton(self, x, y):
+        self.char_x = x
+        self.char_y = y
+        self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = self.skeleton_img, anchor = NW)
+
+class Boss():
+    def __init__(self):
+        self.size = 72
+        self.img = Image.open('boss.png')
+        self.boss_img = ImageTk.PhotoImage(self.img)
+
+    def draw_boss(self, x, y):
+        self.char_x = x
+        self.char_y = y
+        self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = self.boss_img, anchor = NW)
+
 m = Map()
 m.sketch_map()
 hero = Hero()
 hero.draw_hero()
+skeleton = Skeleton()
+skeleton.draw_skeleton(8, 0)
+skeleton.draw_skeleton(4, 0)
+skeleton.draw_skeleton(4, 4)
+boss = Boss()
+boss.draw_boss(0,6)
 
 def on_key_press(e):
-    print(hero.char_x)
-    print(hero.char_y)
-
     if e.keycode == 8320768:
         hero.move_hero(hero.char_x, hero.char_y-1, hero.img_up)
     elif e.keycode == 8255233:
@@ -86,5 +108,4 @@ canvas.bind("<KeyPress>", on_key_press)
 canvas.focus_set()
 
 canvas.pack()
-
 root.mainloop()
