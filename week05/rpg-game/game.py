@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 
 root = Tk()
 canvas = Canvas(root, width=720, height=720)
+canvas.pack()
 
 class Map():
     def __init__(self):
@@ -31,9 +32,9 @@ class Map():
         for y in range(len(self.map_template)):
             for x in range(len(self.map_template[y])):
                 if self.map_template[y][x] == 1:
-                    canvas.create_image(self.x+self.size*x, self.y+self.size*y, image = self.wall)
+                    canvas.create_image(self.x + self.size * x, self.y + self.size * y, image = self.wall)
                 if self.map_template[y][x] == 0:
-                    canvas.create_image(self.x+self.size*x, self.y+self.size*y, image = self.floor)
+                    canvas.create_image(self.x + self.size * x, self.y + self.size * y, image = self.floor)
 
 class Hero():
     def __init__(self):
@@ -49,17 +50,17 @@ class Hero():
         self.hero = 0 #but whyyyy
 
     def draw_hero(self, x = 0, y = 0):
-        self.char_x = x
-        self.char_y = y
-        self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = self.img_down, anchor = NW)
+        self.hero_x = x
+        self.hero_y = y
+        self.hero = canvas.create_image(self.hero_x * self.size, self.hero_y * self.size, image = self.img_down, anchor = NW)
 
     def move_hero(self, x, y, graphics):
         if 0 <= x <= 9 or 0 <= y <= 9:
             if m.map_template[y][x] == 0:
                 canvas.delete(self.hero)
-                self.char_x = x
-                self.char_y = y
-                self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = graphics, anchor = NW)
+                self.hero_x = x
+                self.hero_y = y
+                self.hero = canvas.create_image(self.hero_x * self.size, self.hero_y * self.size, image = graphics, anchor = NW)
 
 class Skeleton():
     def __init__(self):
@@ -68,20 +69,49 @@ class Skeleton():
         self.skeleton_img = ImageTk.PhotoImage(self.img)
 
     def draw_skeleton(self, x, y):
-        self.char_x = x
-        self.char_y = y
-        self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = self.skeleton_img, anchor = NW)
+        self.skel_x = x
+        self.skel_y = y
+        self.skeleton = canvas.create_image(self.skel_x * self.size, self.skel_y * self.size, image = self.skeleton_img, anchor = NW)
 
 class Boss():
     def __init__(self):
         self.size = 72
         self.img = Image.open('boss.png')
         self.boss_img = ImageTk.PhotoImage(self.img)
+        self.boss = 0
 
     def draw_boss(self, x, y):
-        self.char_x = x
-        self.char_y = y
-        self.hero = canvas.create_image(self.char_x * self.size, self.char_y * self.size, image = self.boss_img, anchor = NW)
+        self.boss_x = x
+        self.boss_y = y
+        self.boss = canvas.create_image(self.boss_x * self.size, self.boss_y * self.size, image = self.boss_img, anchor = NW)
+
+    def move_boss(self, x, y):
+        if 0 <= x <= 9 or 0 <= y <= 9:
+            if m.map_template[y][x] == 0:
+                canvas.delete(self.boss)
+                self.boss_x = x
+                self.boss_y = y
+                self.boss = canvas.create_image(self.boss_x * self.size, self.boss_y * self.size, image = self.boss_img, anchor = NW)
+
+def on_key_press(e):
+    counter = 0
+    if counter % 2 == 0:
+        boss.move_boss(boss.boss_x, boss.boss_y+1)
+    if e.keycode == 8320768:
+        counter += 1
+        hero.move_hero(hero.hero_x, hero.hero_y-1, hero.img_up)
+    elif e.keycode == 8255233:
+        counter += 1
+        hero.move_hero(hero.hero_x, hero.hero_y+1, hero.img_down)
+    elif e.keycode == 8189699:
+        counter += 1
+        hero.move_hero(hero.hero_x+1, hero.hero_y, hero.img_right)
+    elif e.keycode == 8124162:
+        counter += 1
+        hero.move_hero(hero.hero_x-1, hero.hero_y, hero.img_left)
+
+canvas.bind("<KeyPress>", on_key_press)
+canvas.focus_set()
 
 m = Map()
 m.sketch_map()
@@ -94,18 +124,4 @@ skeleton.draw_skeleton(4, 4)
 boss = Boss()
 boss.draw_boss(0,6)
 
-def on_key_press(e):
-    if e.keycode == 8320768:
-        hero.move_hero(hero.char_x, hero.char_y-1, hero.img_up)
-    elif e.keycode == 8255233:
-        hero.move_hero(hero.char_x, hero.char_y+1, hero.img_down)
-    elif e.keycode == 8189699:
-        hero.move_hero(hero.char_x+1, hero.char_y, hero.img_right)
-    elif e.keycode == 8124162:
-        hero.move_hero(hero.char_x-1, hero.char_y, hero.img_left)
-
-canvas.bind("<KeyPress>", on_key_press)
-canvas.focus_set()
-
-canvas.pack()
 root.mainloop()
