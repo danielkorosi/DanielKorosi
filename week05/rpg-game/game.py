@@ -1,5 +1,6 @@
 from tkinter import*
 from PIL import Image, ImageTk
+import random
 
 root = Tk()
 canvas = Canvas(root, width=720, height=720)
@@ -17,15 +18,15 @@ class Map():
 
     def sketch_map(self):
         self.map_template = [
-        [0, 0 , 0 , 1 , 0 , 1 , 0 , 0 , 0 , 0],
-        [0, 0 , 0 , 1 , 0 , 1 , 0 , 0 , 0 , 0],
-        [0, 1 , 1 , 1 , 0 , 1 , 0 , 1 , 1 , 0],
-        [0, 0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0],
-        [1, 1 , 0 , 0 , 0 , 1 , 0 , 0 , 1 , 0],
-        [0, 1 , 0 , 1 , 0 , 0 , 0 , 0 , 1 , 0],
-        [0, 1 , 0 , 0 , 0 , 0 , 0 , 0 , 1 , 0],
-        [0, 0 , 0 , 0 , 0 , 1 , 1 , 0 , 1 , 0],
-        [0, 1 , 1 , 1 , 0 , 0 , 0 , 0 , 1 , 0],
+        [0, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0, 1 , 1 , 1 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [1, 1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0, 1 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0, 1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0, 1 , 1 , 1 , 0 , 0 , 0 , 0 , 0 , 0],
         [0, 0 , 0 , 1 , 0 , 1 , 1 , 0 , 0 , 0]
         ]
 
@@ -114,8 +115,16 @@ class GameLogic():
 
     def on_key_press(self, e):
         self.e = e
+        randomizer = random.random()
         if self.counter % 2 == 0:
-            self.boss.move_boss(self.boss.boss_x, self.boss.boss_y+1, self.m.map_template)
+            if randomizer < 0.25:
+                self.boss.move_boss(self.boss.boss_x, self.boss.boss_y+1, self.m.map_template)
+            if 0.25 < randomizer < 0.5:
+                self.boss.move_boss(self.boss.boss_x, self.boss.boss_y-1, self.m.map_template)
+            if 0.5 <= randomizer < 0.75:
+                self.boss.move_boss(self.boss.boss_x+1, self.boss.boss_y, self.m.map_template)
+            if 0.75 <= randomizer:
+                self.boss.move_boss(self.boss.boss_x-1, self.boss.boss_y, self.m.map_template)
         if e.keycode == 8320768:
             self.counter += 1
             self.hero.move_hero(self.hero.hero_x, self.hero.hero_y-1, self.hero.img_up, self.m.map_template)
