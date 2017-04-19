@@ -1,25 +1,17 @@
 .container {
   display: flex;
-  background-color: #808080;
-}
-
-.green {
-  background-color: #51d400;
-  height: 190px;
-  width: 190px;
-  flex: auto
-}
-
-.yellow {
   background-color: #ffd62a;
-  height: 190px;
-  width: 380px;
-  flex: auto
+  width: 760px;
+  height: 280px;
+  justify-content: center;
+  align-items: center;
 }
 
 .purple {
+  width: 110px;
+  height: 110px;
   background-color: #b02aff;
-  height: 190px;
-  width: 190px;
-  flex: auto
+  justify-content: center;
+  align-items: center;
+
 }
