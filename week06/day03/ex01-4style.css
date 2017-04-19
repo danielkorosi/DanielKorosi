@@ -2,27 +2,25 @@
   display: flex;
   background-color: #808080;
   flex-direction: column;
-
+  height: 760px;
+  width: 380px;
 }
 
 .green {
   background-color: #51d400;
-  height:190px;
-  width: auto;
+  height: 25%;
   flex: 1;
 }
 
 .yellow {
   background-color: #ffd62a;
-  height:380px;
-  width: auto;
+  height: 50%;
   order: 1;
   flex: 2;
 }
 
 .purple {
   background-color: #b02aff;
-  height:190px;
-  width: auto;
+  height: 25%;
   flex: 1;
 }
