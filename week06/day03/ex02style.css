@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  background-color: #808080;
+}
+
+.green {
+  background-color: #51d400;
+  height: 190px;
+  width: 190px;
+  flex: auto
+}
+
+.yellow {
+  background-color: #ffd62a;
+  height: 190px;
+  width: 380px;
+  flex: auto
+}
+
+.purple {
+  background-color: #b02aff;
+  height: 190px;
+  width: 190px;
+  flex: auto
+}
