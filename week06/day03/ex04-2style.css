@@ -1,5 +1,4 @@
 .container0 {
-  padding: 0px;
   height: 1000px;
   width: 90%;
   margin: 0 auto;
@@ -7,19 +6,22 @@
 
 .container1 {
   width: 100%;
-  height: 60px;
+  height: 80px;
   margin: 0px;
   background-color: #b02aff;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .link1 {
   background-color: #2aeaff;
   width: 18%;
   height: 36px;
-  margin-left: 15px;
+  margin-left: 40px;
   margin-right: 10px;
 }
 
@@ -41,16 +43,24 @@
   width: 100%;
   height: 100%;
   display: flex;
+  margin-top: 90px;
 }
 
 main {
   height: 100%;
-  width: 65%;
+  width: 30%;
   background-color: #ffd62a;
+  margin-right: 10px;
 }
 
 aside {
   height: 100%;
-  width: 35%;
+  width: 70%;
   background-color: #51d400;
+}
+
+.footer {
+  background-color: #CCCCCC;
+  height: 50px;
+  margin-top: 10px;
 }

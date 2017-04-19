@@ -6,20 +6,20 @@
 .green {
   background-color: #51d400;
   height: 190px;
-  width: 190px;
+  flex-basis: : 190px;
   flex: 1;
 }
 
 .yellow {
   background-color: #ffd62a;
   height: 190px;
-  width: 380px;
+  flex-basis: : 380px;
   flex: 2;
 }
 
 .purple {
   background-color: #b02aff;
   height: 190px;
-  width: 190px;
+  flex-basis: : 190px;
   flex: 1;
 }
