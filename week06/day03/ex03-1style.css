@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  height: 280px;
+  background-color: #ffd62a;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+}
+.item {
+  height: 110px;
+  width: 110px;
+  background-color: #b02aff;
+  margin-right: 8px;
+}
