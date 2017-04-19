@@ -1,6 +1,4 @@
 .container {
-  display: flex;
-  background-color: #ffd62a;
   width: 760px;
   height: 280px;
   justify-content: center;
@@ -11,7 +9,12 @@
   width: 110px;
   height: 110px;
   background-color: #b02aff;
-  justify-content: center;
-  align-items: center;
+  z-index: 1;
+}
+
+.yellow {
+  background-color: #ffd62a;
+  width: auto;
+  height: auto;
 
 }
