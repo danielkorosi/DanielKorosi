@@ -4,5 +4,14 @@ header {
 }
 
 .container0 {
-  display: flex
+  display: flex;
+}
+
+.age-gender {
+  display: flex;
+
+}
+
+.brands {
+  display: flex;
 }
