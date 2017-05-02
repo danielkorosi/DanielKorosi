@@ -61,9 +61,10 @@ console.log(g2 * 2 > g1);
 
 var h = 1357988018575474;
 // tell if h has 11 as a divisor (as a boolean)
-if (h%11 == 0) {
+if (h%11 === 0) {
   console.log(true);
 }
+// console.log(h%11 === 0);
 
 
 var i1 = 10;
