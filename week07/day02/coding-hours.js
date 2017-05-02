@@ -17,5 +17,5 @@ var averageHoursWeekly = 52;
 var totalCodingHours = days * hoursDaily;
 var CodingPerWork = (hoursDaily*5 / averageHoursWeekly)*100;
 
-console.log(totalCodingHours)
-console.log(CodingPerWork)
+console.log(totalCodingHours);
+console.log(CodingPerWork);
