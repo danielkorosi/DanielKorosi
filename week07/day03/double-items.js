@@ -10,3 +10,8 @@
    return element
  })
  console.log(ag);
+
+ag.forEach(funciton(el)v{
+  el + el
+  console.log(ag)
+})
