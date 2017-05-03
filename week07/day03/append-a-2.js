@@ -6,7 +6,8 @@
 
 var nimals = ["kuty", "macs", "cic"];
 
-nimals.forEach(function(element){
-  element += 'a'
-  console.log(element);
-})
+nimals = nimals.map(function(element){
+  element += 'a';
+  return element
+});
+console.log(nimals);
