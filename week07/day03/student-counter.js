@@ -11,10 +11,11 @@ var students = [
 
 // create a function that takes a list of students and logs:
 // - how many candies are owned by students
+
 function candyTotal(list) {
   var numOfCandies = 0;
-  list.forEach(function(list){
-    numOfCandies += list.candies;
+  list.forEach(function(i){
+    numOfCandies += i.candies;
   });
   return numOfCandies;
 }
@@ -22,3 +23,14 @@ console.log(candyTotal(students));
 
 // create a function that takes a list of students and logs:
 // - Sum of the age of people who have lass than 5 candies
+
+function ageSum(l) {
+  var totalAge = 0;
+  l.forEach(function(i){
+    if (i.candies < 5) {
+      totalAge += i.age;
+    }
+  })
+  return totalAge
+}
+console.log(ageSum(students));
