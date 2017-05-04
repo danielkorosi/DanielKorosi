@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: innerHTML, textContent</title>
+</head>
+<body>
+  <p>apple banana <strong>cat</strong> dog</p>
+  <p class="output1">elephant</p>
+  <p class="output2">fox</p>
+
+
+  <script>
+    //fill output1 with the first paragraph's content, text only.
+    var output1 = document.querySelector('.output1');
+    var p1 = document.querySelector('body > p');
+    output1.textContent = p1.textContent;
+
+    //fill output2 with the first paragraph's content keeping the cat strong.
+    var output2 = document.querySelector('.output2');
+    output2.innerHTML = p1.innerHTML;
+
+  </script>
+
+</body>
+</html>
