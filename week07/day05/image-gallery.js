@@ -34,9 +34,41 @@ var imageData = [
 var thumbnailList = document.querySelector('.thumbnailList');
 console.log(thumbnailList);
 
+//create thumbnails
 imageData.forEach(function(el) {
   var thumbnailElems = document.createElement('img');
   thumbnailElems.setAttribute('src', el.src);
+  thumbnailElems.setAttribute('class', 'thumbnail')
   thumbnailList.appendChild(thumbnailElems);
   console.log(thumbnailList);
 })
+
+
+function displayNext() {
+  var mainPlace = document.querySelector('.mainimage');
+  var imgDisplayed = document.createElement('img');
+  imgDisplayed.setAttribute('src', imageData[indexPlus()].src);
+  mainPlace.appendChild(imgDisplayed);
+}
+var i = 0;
+function indexPlus() {
+  i++;
+  return i
+}
+
+function indexMinus() {
+  i -= 1;
+  return i
+}
+
+function displayPrevious() {
+  var mainPlace = document.querySelector('.mainimage');
+  var imgDisplayed = document.createElement('img');
+  imgDisplayed.setAttribute('src', imageData[indexMinus()].src);
+  mainPlace.appendChild(imgDisplayed);
+}
+
+var previous = document.querySelector('.previous');
+var next = document.querySelector('.next');
+previous.addEventListener('click', displayPrevious);
+next.addEventListener('click', displayNext);

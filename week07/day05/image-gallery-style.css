@@ -51,17 +51,22 @@ section {
   height: 450px;
 }
 
-
 .button {
   width: 40px;
   background-color: #b2b2b2;
 }
 
-.image {
+.mainimage {
   width: 720px;
   background-color: #3b5998;
 }
 
-ul {
+.thumbnail {
+  width: 10%;
+  height: 10%;
+}
+
+p {
   display: flex;
+  justify-content: space-around;
 }
