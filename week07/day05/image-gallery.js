@@ -1,34 +1,29 @@
 var imageData = [
   {
-    src: 'pic1.jpg',
+    src: 'img1.jpg',
     title: 'title1',
     description: 'description1',
   },
   {
-    src: 'pic2.jpg',
+    src: 'img2.jpg',
     title: 'title2',
     description:'description2',
   },
   {
-    src: 'pic3.jpg',
+    src: 'img3.jpg',
     title: 'title3',
     description:'description3',
   },
   {
-    src: 'pic4.jpg',
+    src: 'img4.jpg',
     title: 'title4',
     description:'description4',
   },
   {
-    src: 'pic5.jpg',
+    src: 'img5.jpg',
     title: 'title5',
     description:'description5',
   },
-  {
-    src: 'pic6.jpg',
-    title: 'title5',
-    description:'description6',
-  }
 ]
 
 var thumbnailList = document.querySelector('.thumbnailList');
@@ -42,20 +37,19 @@ imageData.forEach(function(el) {
   thumbnailElems.setAttribute('class', 'thumbnail')
   thumbnailList.appendChild(thumbnailElems);
   console.log(thumbnailList);
-
-
 })
 
 //display next image
 function displayNext() {
   var mainPlace = document.querySelector('.mainimage');
-  mainPlace.setAttribute('src', imageData[indexPlus()].src);
+  mainPlace.style.backgroundImage = 'url('+imageData[indexPlus()].src+')';
+  mainPlace.textContent(imageData[indexPlus()].title)
 }
 
 //display previous image
 function displayPrevious() {
   var mainPlace = document.querySelector('.mainimage');
-  mainPlace.setAttribute('src', imageData[indexMinus()].src);
+  mainPlace.style.backgroundImage = 'url('+imageData[indexMinus()].src+')';
 }
 //helping variable
 var i = 0;
@@ -75,6 +69,8 @@ var next = document.querySelector('.next');
 previous.addEventListener('click', displayPrevious);
 next.addEventListener('click', displayNext);
 
-//thumbnail clicking
-humbnailElems.addEventListener('click', displayThumbnail);
-el.addEventListener('click', displayThumbnail);
+//var thumbnail = document.querySelectorAll('p.thumbnail');
+
+//thumbnail.forEach(function(el) {
+//  el.addEventListener('click', displayThumbnail();
+//}

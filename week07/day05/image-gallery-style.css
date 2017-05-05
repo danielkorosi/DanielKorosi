@@ -44,28 +44,49 @@ table {
 }
 /* default browser settings cleared */
 
+body {
+  background: grey;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 25%, rgba(204,204,204,1) 86%, rgba(204,204,204,1) 100%);
+}
 
 section {
   display: flex;
-  width: 800px;
+  width: 1000px;
   height: 450px;
+  margin: 0 auto;
+  padding: 10px 10px 10px 10px;
 }
 
 .button {
+  background-color: #f7f7f7;
+}
+button {
   width: 40px;
-  background-color: #b2b2b2;
-}
+  height: 40px;
 
+  position: relative;
+  top: 45%;
+}
+.rightarrow {
+  transform: rotate(180deg);
+}
+button > img: hover {
+  opacity: 0.4;
+}
 .mainimage {
-  background-image: url(pic1.jpg);
-  width: 720px;
+  background-image: url(img1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 850px;
   background-color: #3b5998;
-
+  font-size: 40px;
 }
 
-.thumbnail {
-  width: 10%;
-  height: 10%;
+p img {
+  width: 8%;
+  height: 8%;
+  border: 2px solid black;
+
 }
 
 p {
