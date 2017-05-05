@@ -57,8 +57,10 @@ section {
 }
 
 .mainimage {
+  background-image: url(pic1.jpg);
   width: 720px;
   background-color: #3b5998;
+
 }
 
 .thumbnail {

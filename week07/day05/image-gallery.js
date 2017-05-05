@@ -35,21 +35,29 @@ var thumbnailList = document.querySelector('.thumbnailList');
 console.log(thumbnailList);
 
 //create thumbnails
+
 imageData.forEach(function(el) {
   var thumbnailElems = document.createElement('img');
   thumbnailElems.setAttribute('src', el.src);
   thumbnailElems.setAttribute('class', 'thumbnail')
   thumbnailList.appendChild(thumbnailElems);
   console.log(thumbnailList);
+
+
 })
 
-
+//display next image
 function displayNext() {
   var mainPlace = document.querySelector('.mainimage');
-  var imgDisplayed = document.createElement('img');
-  imgDisplayed.setAttribute('src', imageData[indexPlus()].src);
-  mainPlace.appendChild(imgDisplayed);
+  mainPlace.setAttribute('src', imageData[indexPlus()].src);
 }
+
+//display previous image
+function displayPrevious() {
+  var mainPlace = document.querySelector('.mainimage');
+  mainPlace.setAttribute('src', imageData[indexMinus()].src);
+}
+//helping variable
 var i = 0;
 function indexPlus() {
   i++;
@@ -61,14 +69,12 @@ function indexMinus() {
   return i
 }
 
-function displayPrevious() {
-  var mainPlace = document.querySelector('.mainimage');
-  var imgDisplayed = document.createElement('img');
-  imgDisplayed.setAttribute('src', imageData[indexMinus()].src);
-  mainPlace.appendChild(imgDisplayed);
-}
-
+//click handling
 var previous = document.querySelector('.previous');
 var next = document.querySelector('.next');
 previous.addEventListener('click', displayPrevious);
 next.addEventListener('click', displayNext);
+
+//thumbnail clicking
+humbnailElems.addEventListener('click', displayThumbnail);
+el.addEventListener('click', displayThumbnail);
