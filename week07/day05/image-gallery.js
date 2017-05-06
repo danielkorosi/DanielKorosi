@@ -30,7 +30,6 @@ var thumbnailList = document.querySelector('.thumbnailList');
 console.log(thumbnailList);
 
 //create thumbnails
-
 imageData.forEach(function(el) {
   var thumbnailElems = document.createElement('img');
   thumbnailElems.setAttribute('src', el.src);
@@ -40,27 +39,25 @@ imageData.forEach(function(el) {
 })
 
 //display next image
+var i = 0;
 function displayNext() {
   var mainPlace = document.querySelector('.mainimage');
-  mainPlace.style.backgroundImage = 'url('+imageData[indexPlus()].src+')';
-  mainPlace.textContent(imageData[indexPlus()].title)
+  if (i === imageData.length-1) {
+    mainPlace.style.backgroundImage = 'url('+imageData[0].src+')';
+    i = 0;
+  } else {
+    mainPlace.style.backgroundImage = 'url('+imageData[++i].src+')';
+  }
 }
-
 //display previous image
 function displayPrevious() {
   var mainPlace = document.querySelector('.mainimage');
-  mainPlace.style.backgroundImage = 'url('+imageData[indexMinus()].src+')';
-}
-//helping variable
-var i = 0;
-function indexPlus() {
-  i++;
-  return i
-}
-
-function indexMinus() {
-  i -= 1;
-  return i
+  if (i === 0) {
+    mainPlace.style.backgroundImage = 'url('+imageData[imageData.length-1].src+')';
+    i = imageData.length-1;
+  } else {
+    mainPlace.style.backgroundImage = 'url('+imageData[--i].src+')';
+  }
 }
 
 //click handling
