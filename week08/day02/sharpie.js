@@ -11,7 +11,7 @@ function Sharpie(color, width){
   this.use = function() {
     this.inkAmount -= this.width;
     return this.inkAmount;
-  }
+  };
 }
 
 var sharpie1 = new Sharpie('red', 4.5);
