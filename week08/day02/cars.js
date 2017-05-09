@@ -56,12 +56,12 @@ console.log(refuelFerrari(52))
 
 var tesla = {
   type: 'model S',
-  battery: 50,
+  battery: 5000,
   kms: 200,
-  consumption: 20,
+  consumption: 2,
   ride: function(km) { //method created within the object, not sure if this is a correct implementation
     this.kms += km;
-    this.battery -= this.consumption;
+    this.battery -= km*this.consumption;
   }
 }
 
