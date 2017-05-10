@@ -11,12 +11,21 @@ function addText() {
 };
 
 var clickCounter = 0;
+var timeOver = false;
+
 function clickCount() {
   clickCounter += 1;
-  if (clickCounter === 3) {
-    addText()
+  if (clickCounter >= 3 && timeOver === true) {
+    addText();
   }
 };
 
+function TimeIsOver() {
+  timeOver = true
+  if (clickCounter >= 3) {
+    addText();
+  }
+};
+
+setTimeout(TimeIsOver, 5000);
 button.addEventListener('click', clickCount);
-//setTimeout(addText, 5000);
