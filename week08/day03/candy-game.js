@@ -15,3 +15,16 @@ function countCandy() {
   count += 1;
   numCandy.innerHTML = count;
 }
+
+var lollyButton = document.querySelector('.buy-lollypops');
+var lollyIcons = document.querySelector('.lollypops');
+lollyButton.addEventListener('click', buyLollypop)
+
+function buyLollypop() {
+  if (count >= 100) {
+    lollyIcons.textContent += '🍭';
+    count -= 100;
+    numCandy.innerHTML = count;
+  }
+
+}
