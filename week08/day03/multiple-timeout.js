@@ -6,16 +6,20 @@
 // melon -> after 3 seconds
 // grapes -> after 5 seconds
 
-
-console.log('apple');
-setTimeout(function() {
+function apple () {
+  console.log('apple');
+}
+function pear () {
   console.log('pear');
-}, 1000);
-
-setTimeout(function() {
-  console.log('pear');
-}, 3000);
-
-setTimeout(function() {
+}
+function melon () {
+  console.log('melon');
+}
+function grapes () {
   console.log('grapes');
-}, 5000);
+}
+
+apple();
+setTimeout(pear, 1000);
+setTimeout(melon, 3000);
+setTimeout(grapes, 5000);
