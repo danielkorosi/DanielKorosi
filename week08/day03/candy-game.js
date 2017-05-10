@@ -11,6 +11,7 @@ candyButton.addEventListener('click', countCandy);
 
 var numCandy = document.querySelector('dl .candies');
 var count = 0;
+
 function countCandy() {
   count += 1;
   numCandy.innerHTML = count;
@@ -21,10 +22,17 @@ var lollyIcons = document.querySelector('.lollypops');
 lollyButton.addEventListener('click', buyLollypop)
 
 function buyLollypop() {
-  if (count >= 100) {
-    lollyIcons.textContent += '🍭';
+  if (count >= 100){
+    lollyIcons.innerHTML += '🍭';
     count -= 100;
     numCandy.innerHTML = count;
   }
-
 }
+
+function candyForLolly() {
+  if (lollyIcons.textContent.length >= 20) {
+    countCandy();
+  }
+}
+
+setInterval(candyForLolly, 1000)
