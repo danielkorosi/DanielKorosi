@@ -13,8 +13,8 @@ var fruits = [
 // occurs in the word stored under the same index at the fruits array!
 // Please use the map method.
 
-function eNumber(word) {
-  var wordsInLettters = word.split('');
+var eNumber = fruits.map(function(item) {
+  var wordsInLettters = item.split('');
   var counter = 0;
   wordsInLettters.forEach(function(letter) {
     if (letter === 'e') {
@@ -22,7 +22,6 @@ function eNumber(word) {
     }
   })
   return counter;
-}
+})
 
-var NumOfLetters = fruits.map(eNumber)
-console.log(NumOfLetters);
+console.log(eNumber);
