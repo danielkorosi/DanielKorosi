@@ -3,5 +3,8 @@ body {
 }
 
 img {
-  max-width: 100px;
+  max-width: 150px;
+  margin: 10px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 3px #242424;
 }
