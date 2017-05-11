@@ -28,9 +28,12 @@ request.onreadystatechange = function () {
       pubDate.textContent = el.pub_date;
       details.appendChild(pubDate);
 
-      var permalink = document.createElement('li');
-      permalink.textContent = el.web_url;
-      details.appendChild(permalink);
+      var linkContainer = document.createElement('li');
+      details.appendChild(linkContainer);
+      var permalink = document.createElement('a');
+      permalink.textContent = 'click for the article';
+      permalink.setAttribute('href', el.web_url)
+      linkContainer.appendChild(permalink);
     })
   }
 }
