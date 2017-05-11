@@ -1,16 +1,16 @@
 let fox = new XMLHttpRequest();
 fox.open('GET', 'http://api.giphy.com/v1/gifs/search?q=fox&api_key=dc6zaTOxFJmzC', true);
 fox.send();
-fox.onreadystatechange = getState;
 
-function getState() {
-  console.log(fox);
-}
+var pictures = document.querySelector('div');
 
 fox.onreadystatechange = function () {
  if (fox.readyState === 4 && fox.status === 200) {
-    //console.log(fox.response);
     var resp = JSON.parse(fox.response);
-    console.log(resp);
+    for (var i = 0; i < 16; i++) {
+      var onePic = document.createElement('img');
+      onePic.setAttribute('src', resp.data[i].images.original_still.url);
+      pictures.appendChild(onePic)
+    }
   }
 }
