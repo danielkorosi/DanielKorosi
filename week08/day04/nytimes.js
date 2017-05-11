@@ -3,7 +3,7 @@ var request = new XMLHttpRequest();
 request.open('GET', 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=apollo+11&api_key=0e316cc3d899414ab623037473ae6466', true);
 request.send(null);
 
-var body = document.querySelector('body');
+var article = document.querySelector('article');
 
 request.onreadystatechange = function () {
  if (request.readyState === 4 && request.status === 200) {
@@ -14,7 +14,7 @@ request.onreadystatechange = function () {
 
     docData.forEach(function (el) {
       var details = document.createElement('ol');
-      body.appendChild(details);
+      article.appendChild(details);
 
       var headline = document.createElement('li');
       headline.textContent = el.headline.main;
@@ -27,6 +27,10 @@ request.onreadystatechange = function () {
       var pubDate = document.createElement('li');
       pubDate.textContent = el.pub_date;
       details.appendChild(pubDate);
+
+      var permalink = document.createElement('li');
+      permalink.textContent = el.web_url;
+      details.appendChild(permalink);
     })
   }
 }
