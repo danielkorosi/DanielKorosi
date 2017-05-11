@@ -9,6 +9,8 @@ function getState() {
 
 fox.onreadystatechange = function () {
  if (fox.readyState === 4 && fox.status === 200) {
-    console.log(fox.response);
+    //console.log(fox.response);
+    var resp = JSON.parse(fox.response);
+    console.log(resp);
   }
 }
