@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+article {
+  display: flex;
+  align-items: center;
+}
+
+.rank {
+  padding: 30px 10px;
+}
+
+.voting {
+  padding: 10px 10px;
+}
+
+.vote-number {
+  padding: 2px 0px;
+}
+
+.details {
+  display: flex;
+}
+
+.edit {
+  display: flex;
+}
+
+.title {
+  font-size: 26px;
+}
