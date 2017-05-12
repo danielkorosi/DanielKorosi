@@ -14,6 +14,9 @@ article {
 
 .voting {
   padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .vote-number {
@@ -30,4 +33,12 @@ article {
 
 .title {
   font-size: 26px;
+}
+
+.author {
+  padding-left: 10px;
+}
+
+.remove {
+  padding-left: 10px;
 }
