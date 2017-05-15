@@ -23,4 +23,3 @@ try {
 } catch (err) {
     console.log('catching error: '+ err.message)
 }
-//addString(1234, 245234, printStr);
