@@ -42,16 +42,16 @@ test ('multiple elements', function(t) {
 test ('null', function(t) {
   var numberList = [null];
   var actual = sumObject.sum(numberList);
-  var expected = 'the list contains null';
+  var expected = 0;
 
   t.equal(actual, expected);
   t.end();
 });
 
 test ('string', function(t) {
-  var numberList = ['string'];
+  var numberList = ['string', 5];
   var actual = sumObject.sum(numberList);
-  var expected = 'not a number';
+  var expected = 5;
 
   t.equal(actual, expected);
   t.end();
