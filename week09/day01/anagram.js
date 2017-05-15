@@ -2,7 +2,7 @@
 //Create a test for that.
 
 var anagram = function(word1, word2) {
-  if (word1.split('').sort().join() === word2.split('').sort().join()) {
+  if (word1.toLowerCase().split('').sort().join() === word2.toLowerCase().split('').sort().join()) {
     return true;
   } else {
     return false

@@ -5,7 +5,6 @@ var sumObject = {
       if (typeof l[i] === 'number') {
           result += l[i];
     }
-
   }
   return result;
 }

@@ -10,3 +10,11 @@ test('if anagram', function(t) {
   t.equal(actual, expected);
   t.end();
 });
+
+test('uppercase', function(t) {
+  var actual = anagram('Asdf', 'fdsa')
+  var expected = true
+
+  t.equal(actual, expected);
+  t.end();
+});
