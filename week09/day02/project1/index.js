@@ -1,9 +1,11 @@
 'use strict';
 
 var express = require('express');
-
+var bodyParser = require('body-parser')
 var app = express();
+
 app.use('/assets', express.static('assets'))
+app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
@@ -38,7 +40,7 @@ app.get('/greeter', function(req, res) {
 });
 
 app.get('/appenda/:name', function(req, res) {
-  var name = req.params.name
+  var name = req.params.name;
   if (name !== undefined) {
     res.send({
       appended: name + "a",
@@ -46,5 +48,24 @@ app.get('/appenda/:name', function(req, res) {
   }
 });
 
+app.post('/dountil/:file', function(req, res) {
+  var file = req.params.file;
+  var value = req.body.until;
+  var sum = 0;
+  var multiple = 1;
+  if (file === 'sum') {
+    var value = req.body.until;
+    for (var i = 0; i < (value+1); i++) {
+      sum += i;
+    }
+    res.send({result: sum});
+
+  } else if (file === 'factor') {
+    for (var i = 1; i < (value+1); i++) {
+      multiple *= i;
+    }
+    res.send({result: multiple});
+  }
+})
 
 app.listen(8080);
