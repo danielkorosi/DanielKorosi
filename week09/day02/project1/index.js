@@ -10,4 +10,12 @@ app.get('/', function(req, res) {
 });
 app.use('/assets', express.static('assets'))
 
-app.listen(3000);
+app.get('/doubling', function(req, res) {
+  var input = req.query.input;
+  res.send({
+    "received": input,
+  "result": input*2,
+})
+});
+
+app.listen(8080);
