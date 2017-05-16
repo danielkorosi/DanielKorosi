@@ -3,12 +3,12 @@
 var express = require('express');
 
 var app = express();
+app.use('/assets', express.static('assets'))
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 
 });
-app.use('/assets', express.static('assets'))
 
 app.get('/doubling', function(req, res) {
   var input = req.query.input;
@@ -37,9 +37,14 @@ app.get('/greeter', function(req, res) {
   }
 });
 
-//app.get('/appenda'), function(req, res) {
-
-//}
+app.get('/appenda/:name', function(req, res) {
+  var name = req.params.name
+  if (name !== undefined) {
+    res.send({
+      appended: name + "a",
+    });
+  }
+});
 
 
 app.listen(8080);
