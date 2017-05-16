@@ -30,10 +30,16 @@ app.get('/greeter', function(req, res) {
 
   if (name && title) {
     res.send({welcome_message: "Oh, hi there " + name + ", my dear " + title + "!"})
-  } else {
+  } else if (name === undefined) {
       res.send({error: "Please provide a name!"})
+  } else if (title === undefined) {
+      res.send({error: "Please provide a title!"})
   }
 });
+
+//app.get('/appenda'), function(req, res) {
+
+//}
 
 
 app.listen(8080);
