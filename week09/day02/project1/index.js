@@ -24,8 +24,16 @@ app.get('/doubling', function(req, res) {
 }
 });
 
-//app.get('/doubling', function(req, res) {
+app.get('/greeter', function(req, res) {
+  var name = req.query.name;
+  var title = req.query.title;
 
-//})
+  if (name && title) {
+    res.send({welcome_message: "Oh, hi there " + name + ", my dear " + title + "!"})
+  } else {
+      res.send({error: "Please provide a name!"})
+  }
+});
+
 
 app.listen(8080);
