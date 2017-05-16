@@ -9,7 +9,6 @@ app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
-
 });
 
 app.get('/doubling', function(req, res) {
@@ -59,12 +58,13 @@ app.post('/dountil/:file', function(req, res) {
       sum += i;
     }
     res.send({result: sum});
-
   } else if (file === 'factor') {
     for (var i = 1; i < (value+1); i++) {
       multiple *= i;
     }
     res.send({result: multiple});
+  } else {
+    res.send({error: "Please provide a number!"})
   }
 })
 
