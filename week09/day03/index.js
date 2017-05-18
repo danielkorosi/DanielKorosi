@@ -19,26 +19,24 @@ conn.connect(function(err){
   console.log("Connection established");
 });
 
+const country = 'USA';
+const query = "SELECT * FROM author WHERE country = ?";
+
 app.get('/', function get(req, res){
-  res.send('endpointtest');
+  var result = [];
+  conn.query(query, [country], function(err,rows){
+    if (err){
+      console.log("para van", err);
+    } else {
+      console.log("Data received from Db:\n");
+      rows.forEach(function(row) {
+        result.push(row.aut_name);
+    })
+    }
+    res.send(result);
+  });
 });
 
 app.listen(3000, function(){
   console.log('server is running');
 });
-
-const country = 'USA';
-const query = "SELECT * FROM author WHERE country = ?";
-
-conn.query(query, [country], function(err,rows){
-if (err){
-  console.log("para van", err);
-} else {
-  console.log("Data received from Db:\n");
-  rows.forEach(function(rows) {
-    console.log(rows.aut_name);
-  })
-  }
-});
-
-conn.end();
