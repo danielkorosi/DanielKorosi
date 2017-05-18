@@ -20,20 +20,25 @@ conn.connect(function(err){
 });
 
 const country = 'USA';
-const query = "SELECT * FROM author WHERE country = ?";
+const query = 'SELECT book_name FROM book_mast';
+
+var list = '<ul>';
+var li_open = '<li>';
+var li_close = '</li>';
 
 app.get('/', function get(req, res){
-  var result = [];
-  conn.query(query, [country], function(err,rows){
+  conn.query(query, function(err,rows){
     if (err){
       console.log("para van", err);
     } else {
       console.log("Data received from Db:\n");
-      rows.forEach(function(row) {
-        result.push(row.aut_name);
-    })
+      rows.forEach(function(el) {
+        list += li_open + el.book_name + li_close;
+      })
+      list += '</ul>';
+      res.send(list);
+      console.log(list);
     }
-    res.send(result);
   });
 });
 
