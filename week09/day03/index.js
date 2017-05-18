@@ -1,9 +1,13 @@
+'use strict';
+
 const mysql = require('mysql');
+var express = require('express');
+var app = express();
 
 var conn = mysql.createConnection({
   host: "localhost",
   user: "'root'",
-  password: "root",
+  password: "root", //in case of real projects put these data in another file which is put in gitignore
   database: "bookstore"
 });
 
@@ -15,8 +19,17 @@ conn.connect(function(err){
   console.log("Connection established");
 });
 
+app.get('/', function get(req, res){
+  res.send('endpointtest');
+});
+
+app.listen(3000, function(){
+  console.log('server is running');
+});
+
 const country = 'USA';
-const query = "SELECT * FROM author WHERE country = ?"
+const query = "SELECT * FROM author WHERE country = ?";
+
 conn.query(query, [country], function(err,rows){
 if (err){
   console.log("para van", err);
