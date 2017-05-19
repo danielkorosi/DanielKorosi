@@ -32,6 +32,7 @@ var thumbnailList = document.querySelector('.thumbnailList');
 var mainPlace = document.querySelector('.mainimage');
 var previous = document.querySelector('.previous');
 var next = document.querySelector('.next');
+var i = 0;
 
 function createThumbnails() {
   imageData.forEach(function(el) {
@@ -47,23 +48,21 @@ function imageFill() {
   mainPlace.style.backgroundImage = 'url('+imageData[i].src+')';
 };
 
-var i = 0;
-function displayNext() {
-  i++;
+
+function display(increment) {
+  i += increment;
   if (i === imageData.length) {
     i = 0;
-  }
-  imageFill(i)
-}
-
-function displayPrevious() {
-  i--;
-  if (i === -1) {
+  } else if (i === -1) {
     i = imageData.length-1;
   }
   imageFill(i)
 }
 
 createThumbnails()
-previous.addEventListener('click', displayPrevious);
-next.addEventListener('click', displayNext);
+previous.addEventListener('click', function(){
+  display(-1);
+});
+next.addEventListener('click', function(){
+  display(+1);
+});
