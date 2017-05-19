@@ -1,3 +1,5 @@
+'use strict';
+
 var imageData = [
   {
     src: 'img1.jpg',
@@ -27,47 +29,41 @@ var imageData = [
 ]
 
 var thumbnailList = document.querySelector('.thumbnailList');
-console.log(thumbnailList);
-
-//create thumbnails
-imageData.forEach(function(el) {
-  var thumbnailElems = document.createElement('img');
-  thumbnailElems.setAttribute('src', el.src);
-  thumbnailElems.setAttribute('class', 'thumbnail')
-  thumbnailList.appendChild(thumbnailElems);
-  console.log(thumbnailList);
-})
-
-//display next image
-var i = 0;
-function displayNext() {
-  var mainPlace = document.querySelector('.mainimage');
-  if (i === imageData.length-1) {
-    mainPlace.style.backgroundImage = 'url('+imageData[0].src+')';
-    i = 0;
-  } else {
-    mainPlace.style.backgroundImage = 'url('+imageData[++i].src+')';
-  }
-}
-//display previous image
-function displayPrevious() {
-  var mainPlace = document.querySelector('.mainimage');
-  if (i === 0) {
-    mainPlace.style.backgroundImage = 'url('+imageData[imageData.length-1].src+')';
-    i = imageData.length-1;
-  } else {
-    mainPlace.style.backgroundImage = 'url('+imageData[--i].src+')';
-  }
-}
-
-//click handling
+var mainPlace = document.querySelector('.mainimage');
 var previous = document.querySelector('.previous');
 var next = document.querySelector('.next');
+
+function createThumbnails() {
+  imageData.forEach(function(el) {
+    var thumbnailElems = document.createElement('img');
+    thumbnailElems.setAttribute('src', el.src);
+    thumbnailElems.setAttribute('class', 'thumbnail')
+    thumbnailList.appendChild(thumbnailElems);
+    console.log(thumbnailList);
+  })
+}
+
+function imageFill() {
+  mainPlace.style.backgroundImage = 'url('+imageData[i].src+')';
+};
+
+var i = 0;
+function displayNext() {
+  i++;
+  if (i === imageData.length) {
+    i = 0;
+  }
+  imageFill(i)
+}
+
+function displayPrevious() {
+  i--;
+  if (i === -1) {
+    i = imageData.length-1;
+  }
+  imageFill(i)
+}
+
+createThumbnails()
 previous.addEventListener('click', displayPrevious);
 next.addEventListener('click', displayNext);
-
-//var thumbnail = document.querySelectorAll('p.thumbnail');
-
-//thumbnail.forEach(function(el) {
-//  el.addEventListener('click', displayThumbnail();
-//}
