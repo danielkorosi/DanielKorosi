@@ -1,96 +1,79 @@
-'use strict'
+'use strict';
+
 var TennisGame1 = function(player1Name, player2Name) {
     this.m_score1 = 0;
     this.m_score2 = 0;
     this.player1Name = player1Name;
     this.player2Name = player2Name;
+    this.score = "";
+    this.tempScore = 0;
 };
 
 TennisGame1.prototype.wonPoint = function(playerName) {
-    if (playerName === "player1"){
-      this.m_score1 += 1;
+    if (playerName === "player1") {
+        this.m_score1 += 1;
     }
     else {
-      this.m_score2 += 1;
+        this.m_score2 += 1;
     }
 };
 
-function getEqualScore(playerScore){
-  var score = "";
-  switch (playerScore) {
-      case 0:
-          score = "Love-All";
-          break;
-      case 1:
-          score = "Fifteen-All";
-          break;
-      case 2:
-          score = "Thirty-All";
-          break;
-      default:
-          score = "Deuce";
-          break;
-      }
-    return score;
-}
-
-//all score cases
-TennisGame1.prototype.getScore = function() {
-    var score = "";
-    var tempScore = 0;
-//all equal cases
-    if (this.m_score1 === this.m_score2) {
-      score = getEqualScore(this.m_score1);
-        /*switch (this.m_score1) {
+TennisGame1.prototype.getEqualScore = function() {
+    switch (this.m_score1) {
             case 0:
-                score = "Love-All";
+                this.score = "Love-All";
                 break;
             case 1:
-                score = "Fifteen-All";
+                this.score = "Fifteen-All";
                 break;
             case 2:
-                score = "Thirty-All";
+                this.score = "Thirty-All";
                 break;
             default:
-                score = "Deuce";
+                this.score = "Deuce";
                 break;
-        }*/
-//4-3, 3-4, 5-3, 3-5
+        }
+};
+
+TennisGame1.prototype.AdvantageOrWin = function() {
+  let minusResult = this.m_score1 - this.m_score2;
+  if (minusResult === 1) this.score = "Advantage player1";
+  else if (minusResult === -1) this.score = "Advantage player2";
+  else if (minusResult >= 2) this.score = "Win for player1";
+  else this.score = "Win for player2";
+}
+
+TennisGame1.prototype.getScore = function() {
+    if (this.m_score1 === this.m_score2) {
+        this.getEqualScore();
     } else if (this.m_score1 >= 4 || this.m_score2 >= 4) {
-        var minusResult = this.m_score1 - this.m_score2;
-        if (minusResult === 1) score = "Advantage player1";
-        else if (minusResult === -1) score = "Advantage player2";
-        else if (minusResult >= 2) score = "Win for player1";
-        else score = "Win for player2"; //-2
-//
+        this.AdvantageOrWin();
     } else {
-        for (var i = 1; i < 3; i++) {
-            if (i === 1) {
-              tempScore = this.m_score1;
-            }
+        for (let i = 1; i < 3; i++) {
+            if (i === 1) this.tempScore = this.m_score1;
             else {
-                score += "-";
-                tempScore = this.m_score2;
+                this.score += "-";
+                this.tempScore = this.m_score2;
             }
-            switch (tempScore) {
+            switch (this.tempScore) {
                 case 0:
-                    score += "Love";
+                    this.score += "Love";
                     break;
                 case 1:
-                    score += "Fifteen";
+                    this.score += "Fifteen";
                     break;
                 case 2:
-                    score += "Thirty";
+                    this.score += "Thirty";
                     break;
                 case 3:
-                    score += "Forty";
+                    this.score += "Forty";
                     break;
             }
         }
     }
-    return score;
+    return this.score;
 };
 
 if (typeof window === "undefined") {
     module.exports = TennisGame1;
-};
+}
