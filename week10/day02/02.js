@@ -8,6 +8,22 @@
 function Rectangles(a, b) {
   this.a = a;
   this.b = b;
+}
+Rectangles.prototype.getArea = function() {
+  return this.a * this.b
+}
+Rectangles.prototype.getCircumference = function() {
+  return 2 * (this.a + this.b)
+}
+
+var rect = new Rectangles(3, 5);
+console.log(rect.getArea());
+console.log(rect.getCircumference());
+
+
+function Rectangles1(a, b) {
+  this.a = a;
+  this.b = b;
   this.getArea = function() {
     return this.a * this.b
   }
@@ -16,9 +32,10 @@ function Rectangles(a, b) {
   }
 }
 
-var rect1 = new Rectangles(2, 3);
+var rect1 = new Rectangles1(2, 3);
 console.log(rect1.getArea());
 console.log(rect1.getCircumference());
+
 
 class Rectanglez {
   constructor(a, b) {
