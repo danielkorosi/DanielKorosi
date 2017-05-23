@@ -4,12 +4,24 @@
 // it should take one parameter: what the animal says
 // Every animal should have a method called say() that prints what the animal says
 
-function Animal1(noise) {
-  this.say = function(noise) {
-    console.log(noise);
+function Animal1(sound) {
+  this.sound = sound;
+  this.say1 = function() {
+    console.log(sound);
   }
 };
 
-var cat = new Animal1();
+var cat = new Animal1('meeuw');
+cat.say1();
 
-cat.say('meeuw')
+class Animal2 {
+  constructor(sound) {
+    this.sound = sound;
+    this.say2 = function() {
+      console.log(sound);
+    }
+  }
+}
+
+var dog = new Animal2('wah');
+dog.say2();
