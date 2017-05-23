@@ -19,3 +19,38 @@ function Rectangles(a, b) {
 var rect1 = new Rectangles(2, 3);
 console.log(rect1.getArea());
 console.log(rect1.getCircumference());
+
+class Rectanglez {
+  constructor(a, b) {
+    this.a = a;
+    this.b = b;
+    this.getArea = function() {
+      return this.a * this.b
+    }
+    this.getCircumference = function() {
+      return 2 * (this.a+this.b)
+    }
+  }
+}
+
+var rect2 = new Rectanglez(4,5)
+console.log(rect2.getArea());
+console.log(rect2.getCircumference());
+
+
+class Rectanglezzz {
+  constructor(a, b) {
+    this.a = a;
+    this.b = b;
+  }
+  getArea() {
+    return this.a * this.b
+  }
+  getCircumference() {
+    return 2 * (this.a+this.b)
+  }
+}
+
+var rect3 = new Rectanglezzz(4,5)
+console.log(rect3.getArea());
+console.log(rect3.getCircumference());
