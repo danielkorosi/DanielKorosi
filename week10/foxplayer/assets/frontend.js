@@ -3,33 +3,17 @@
 var playlists = document.querySelector('.playlists');
 var trackList = document.querySelector('.tracks');
 
-function getPlaylists(callback) {
-  var request = new XMLHttpRequest();
-  request.open('GET', 'http://localhost:3000/playlists', true);
-  request.send();
-
-  request.onreadystatechange = function () {
-   if (request.readyState === 4 && request.status === 200) {
-    var playlistData = JSON.parse(request.response);
-      console.log(playlistData);
-      callback(playlistData);
+function ajax(url, callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+                var resp = JSON.parse(request.response );
+                callback(resp);
+            }
     }
-  }
-};
-
-function getTracks(callback) {
-  var request = new XMLHttpRequest();
-  request.open('GET', 'http://localhost:3000/playlist-tracks', true);
-  request.send();
-
-  request.onreadystatechange = function () {
-   if (request.readyState === 4 && request.status === 200) {
-    var tracks = JSON.parse(request.response);
-      console.log(tracks);
-      callback(tracks);
-    }
-  }
-};
+    request.send();
+}
 
 function displayPlaylist(data) {
   data.forEach(function(el) {
@@ -48,5 +32,9 @@ function displayTracks(data) {
   });
 };
 
-getPlaylists(displayPlaylist);
-getTracks(displayTracks);
+
+
+
+
+ajax('http://localhost:3000/playlists', displayPlaylist);
+ajax('http://localhost:3000/playlist-tracks', displayTracks);
