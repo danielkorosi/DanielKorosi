@@ -17,9 +17,9 @@ var playlists = [
 
 
 var allTracks = [
-	{ "id": 21, "title": "Halahula", "artist": "Untitled artist", "duration": 545, "path": "c:/music/halahula.mp3" },
-  { "id": 25, "title": "blablabla", "artist": "Untitled artist", "duration": 545, "path": "c:/music/halahula.mp3"},
-	{ "id": 412, "title": "No sleep till Brooklyn", "artist": "Beastie Boys", "duration": 312.12, "path": "c:/music/beastie boys/No sleep till Brooklyn.mp3" }
+	{ "id": 21, "title": "Halahula", "artist": "Untitled artist", "duration": 545, "path": "https://upload.wikimedia.org/wikipedia/commons/1/1f/DetroitBlues.ogg" },
+  { "id": 25, "title": "lkgfnsldkfng", "duration": 545, "path": "https://upload.wikimedia.org/wikipedia/commons/1/1f/DetroitBlues.ogg"},
+	{ "id": 412, "title": "No sleep till Brooklyn", "artist": "Beastie Boys", "duration": 312.12, "path": "https://upload.wikimedia.org/wikipedia/commons/1/1f/DetroitBlues.ogg" }
 ]
 
 app.get('/playlists', function(req, res){
