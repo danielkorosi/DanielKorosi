@@ -183,3 +183,13 @@ audio::-webkit-media-controls-play-button {
 	justify-content: space-between;
 	padding: 4px;
 }
+
+/*.delete-playlist {
+	height: 20px;
+
+}*/
+
+.playlist-item {
+	display: flex;
+	justify-content: space-between;
+}

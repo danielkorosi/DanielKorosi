@@ -5,26 +5,49 @@ var trackList = document.querySelector('.tracks');
 var addNewPlaylist = document.querySelector('.left-add');
 var audio = document.querySelector('audio');
 
-function ajax(url, callback) {
+function ajaxGet(url, callback) {
     var request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
                 var resp = JSON.parse(request.response);
-                //console.log(resp);
+                console.log(resp);
                 callback(resp);
             }
     }
     request.send();
 }
 
+/*function ajaxDelete(url, id) {
+    var request = new XMLHttpRequest();
+    request.open('DELETE', url + id, true);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+                var resp = JSON.parse(request.response);
+            }
+    }
+    request.send();
+}*/
+
+
 function displayPlaylist(data) {
   data.forEach(function(el) {
     var playlistItem = document.createElement('li');
     playlists.appendChild(playlistItem);
-    playlistItem.innerHTML = el.title;
+    console.log(el);
     playlistItem.className = 'playlist-item';
-    //playlistItem.addEventListener('click', function() {})
+    var playlistText = document.createElement('div');
+    playlistText.innerHTML = el.playlist;
+    playlistItem.appendChild(playlistText);
+    /*if (el.system === 0) {
+      var deletePlaylist = document.createElement('div');
+      deletePlaylist.className = 'delete-playlist';
+      deletePlaylist.style.background = "url('delete.png')";
+      playlistItem.appendChild(deletePlaylist);
+      deletePlaylist.addEventListener('click', function() {
+        ajaxDelete('http://localhost:3000/playlists-delete', el.id);
+      })
+    }*/
   });
 };
 
@@ -48,7 +71,7 @@ function displayTracks(data) {
     }
     duration.innerHTML =  trackMin + ':' + trackSec;;
     trackItem.appendChild(duration);
-    
+
     trackItem.addEventListener('click', function() {
       console.log(el);
       playTrack(el);
@@ -56,7 +79,7 @@ function displayTracks(data) {
   });
 };
 
-function createNewPLaylist() {
+function createNewPlaylist() {
   var playlistItem = document.createElement('li');
   var newPlaylist = playlists.appendChild(playlistItem)
   newPlaylist.innerHTML = 'new playlist';
@@ -67,6 +90,6 @@ function playTrack(track) {
   audio.play();
 };
 
-addNewPlaylist.addEventListener("click", createNewPLaylist);
-ajax('http://localhost:3000/playlists', displayPlaylist);
-ajax('http://localhost:3000/playlist-tracks', displayTracks);
+addNewPlaylist.addEventListener("click", createNewPlaylist);
+ajaxGet('http://localhost:3000/playlists', displayPlaylist);
+ajaxGet('http://localhost:3000/playlist-tracks', displayTracks);
