@@ -53,6 +53,22 @@ app.get('/playlist-tracks', function(req, res){
     });
 });
 
+app.delete('/playlists/:id', function (req, res) {
+    var idSelected = parseInt(req.params.id);
+    var afterDeletion = {};
+    conn.query('DELETE FROM playlists WHERE id = "'+idSelected +'"', function(err, rows) {
+      conn.query('SELECT * FROM playlists', function(err, rows){
+        	if (err){
+            	console.log('hiba', err);
+        	} else{
+            	afterDeletion = rows;
+				      console.log(afterDeletion);
+        	};
+        	res.send(afterDeletion);
+    	})
+	})
+});
+
 app.listen(3000, function(){
     console.log('server is running');
 });

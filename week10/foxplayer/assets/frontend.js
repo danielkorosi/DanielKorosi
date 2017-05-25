@@ -17,17 +17,28 @@ function ajaxGet(url, callback) {
     }
     request.send();
 }
-
-/*function ajaxDelete(url, id) {
+function ajaxPost(url, callback) {
     var request = new XMLHttpRequest();
-    request.open('DELETE', url + id, true);
+    request.open('POST', url, true);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+                var resp = JSON.parse(request.response);
+                console.log(resp);
+                callback();
+            }
+    }
+    request.send();
+}
+function ajaxDelete(url, id) {
+    var request = new XMLHttpRequest();
+    request.open('DELETE', url+id, true);
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
                 var resp = JSON.parse(request.response);
             }
     }
     request.send();
-}*/
+}
 
 
 function displayPlaylist(data) {
@@ -39,15 +50,15 @@ function displayPlaylist(data) {
     var playlistText = document.createElement('div');
     playlistText.innerHTML = el.playlist;
     playlistItem.appendChild(playlistText);
-    /*if (el.system === 0) {
+    if (el.system === 0) {
       var deletePlaylist = document.createElement('div');
       deletePlaylist.className = 'delete-playlist';
-      deletePlaylist.style.background = "url('delete.png')";
+      deletePlaylist.innerHTML = "X";
       playlistItem.appendChild(deletePlaylist);
       deletePlaylist.addEventListener('click', function() {
-        ajaxDelete('http://localhost:3000/playlists-delete', el.id);
+        ajaxDelete('http://localhost:3000/playlists/', el.id);
       })
-    }*/
+    }
   });
 };
 
@@ -56,12 +67,15 @@ function displayTracks(data) {
     var trackItem = document.createElement('li');
     trackItem.className = 'trackBox';
     trackList.appendChild(trackItem);
+
     var trackId = document.createElement('div');
     trackId.innerHTML = el.id;
     trackItem.appendChild(trackId);
+
     var trackTitle = document.createElement('div');
     trackTitle.innerHTML = el.title;
     trackItem.appendChild(trackTitle);
+
     var duration = document.createElement('div');
     duration.className = 'track-time';
     var trackMin = trackMin = Math.floor(el.duration / 60);
@@ -79,17 +93,20 @@ function displayTracks(data) {
   });
 };
 
+function playTrack(track) {
+  audio.setAttribute('src', track.path)
+  audio.play();
+};
+
 function createNewPlaylist() {
   var playlistItem = document.createElement('li');
   var newPlaylist = playlists.appendChild(playlistItem)
   newPlaylist.innerHTML = 'new playlist';
 }
 
-function playTrack(track) {
-  audio.setAttribute('src', track.path)
-  audio.play();
-};
-
 addNewPlaylist.addEventListener("click", createNewPlaylist);
+
 ajaxGet('http://localhost:3000/playlists', displayPlaylist);
 ajaxGet('http://localhost:3000/playlist-tracks', displayTracks);
+ajaxPost('http://localhost:3000/playlists', createNewPlaylist);
+ajaxDelete('http://localhost:3000/playlists/:2', )
