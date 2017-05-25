@@ -77,6 +77,7 @@ main {
   display: flex;
   justify-content: space-between;
   padding: 4px;
+	font-weight: bold;
 }
 
 .logo-playheader {
@@ -175,4 +176,10 @@ audio::-webkit-media-controls, audio::-webkit-media-controls-panel {
 
 audio::-webkit-media-controls-play-button {
 	margin: 0 2rem;
+}
+
+.trackBox {
+	display: flex;
+	justify-content: space-between;
+	padding: 4px;
 }
