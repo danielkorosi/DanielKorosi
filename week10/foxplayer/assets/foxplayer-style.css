@@ -184,6 +184,14 @@ audio::-webkit-media-controls-play-button {
 	padding: 4px;
 }
 
+.trackBox:hover {
+	background-color: #b0bbbf;
+}
+
+.playlist-item:hover {
+	background-color: #b0bbbf;
+}
+
 /*.delete-playlist {
 	height: 20px;
 

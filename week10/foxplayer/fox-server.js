@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
+app.use(bodyParser.json());
 var playlistsListed;
 var tracksListed;
 
@@ -22,7 +23,6 @@ conn.connect(function(err){
   console.log("Connection established");
 });
 
-var app = express();
 app.use('/assets', express.static('assets'))
 
 app.get('/', function(req, res) {
@@ -68,6 +68,25 @@ app.delete('/playlists/:id', function (req, res) {
     	})
 	})
 });
+
+app.post('/playlists', function (req, res) {
+    console.log(req.body);
+    var post = req.body
+
+    var postedList = {};
+    conn.query('INSERT INTO playlists (playlist, system) VALUES ("'+post.playlist +'", "'+post.system+'")', function(err, rows) {
+      conn.query('SELECT * FROM playlists', function(err, rows){
+        	if (err){
+            	console.log('hiba', err);
+        	} else{
+            	postedList = rows;
+				      //console.log(postedList);
+        	};
+        	res.send(postedList);
+    	})
+	})
+});
+
 
 app.listen(3000, function(){
     console.log('server is running');
