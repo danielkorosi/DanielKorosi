@@ -4,9 +4,11 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
-app.use(bodyParser.json());
+
 var playlistsListed;
 var tracksListed;
+app.use(bodyParser.json());
+app.use('/assets', express.static('assets'));
 
 var conn = mysql.createConnection({
   host: "localhost",
@@ -22,8 +24,6 @@ conn.connect(function(err){
   }
   console.log("Connection established");
 });
-
-app.use('/assets', express.static('assets'))
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/foxplayer.html');
@@ -65,8 +65,8 @@ app.delete('/playlists/:id', function (req, res) {
 				      console.log(afterDeletion);
         	};
         	res.send(afterDeletion);
-    	})
-	})
+    	});
+	});
 });
 
 app.post('/playlists', function (req, res) {
@@ -83,8 +83,8 @@ app.post('/playlists', function (req, res) {
 				      //console.log(postedList);
         	};
         	res.send(postedList);
-    	})
-	})
+    	});
+	});
 });
 
 

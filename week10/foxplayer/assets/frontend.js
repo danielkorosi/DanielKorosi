@@ -1,5 +1,5 @@
 'use strict';
-
+var body = document.querySelector('body');
 var playlists = document.querySelector('.playlists');
 var trackList = document.querySelector('.tracks');
 var addNewPlaylist = document.querySelector('.left-add');
@@ -11,7 +11,7 @@ function ajaxGet(url, callback) {
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
                 var resp = JSON.parse(request.response);
-                //console.log(resp);
+                console.log(resp);
                 callback(resp);
             }
     }
@@ -47,7 +47,6 @@ function ajaxDelete(url, id) {
     request.send();
 }
 
-
 function displayPlaylist(data) {
   playlists.innerHTML = '';
   data.forEach(function(el) {
@@ -65,7 +64,7 @@ function displayPlaylist(data) {
       playlistItem.appendChild(deletePlaylist);
       deletePlaylist.addEventListener('click', function() {
         ajaxDelete('http://localhost:3000/playlists/', el.id);
-          playlists.removeChild(playlistItem );
+          playlists.removeChild(playlistItem);
       })
     }
   });
@@ -110,14 +109,14 @@ function playTrack(track) {
 
 function addPlaylistName() {
   var setPlaylistName = prompt('add the name of your playlist');
-  ajaxPost(setPlaylistName, 'http://localhost:3000/playlists', displayPlaylist);
+    ajaxPost(setPlaylistName, 'http://localhost:3000/playlists', displayPlaylist);
+
 };
 
 addNewPlaylist.addEventListener("click", function() {
-  addPlaylistName()
+  addPlaylistName();
 });
 
 
 ajaxGet('http://localhost:3000/playlists', displayPlaylist);
 ajaxGet('http://localhost:3000/playlist-tracks', displayTracks);
-//ajaxPost('http://localhost:3000/playlists', createNewPlaylist);
