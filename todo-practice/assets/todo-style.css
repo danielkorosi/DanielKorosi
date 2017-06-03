@@ -69,11 +69,12 @@ main {
   padding: 20px;
 }
 
-.todo-item {
+.itemBox {
 	font-family: Lato-Regular, sans-serif;
-	font-size: 26px;
-	line-height: 2.2;
+	font-size: 22px;
+	line-height: 1.4;
 	color: #cecece;
+  display: flex;
 }
 
 .button-text {

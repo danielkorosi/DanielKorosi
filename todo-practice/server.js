@@ -51,17 +51,19 @@ app.get('/todos/:id', function(req, res) {
 });
 
 app.post('/todos', function(req, res) {
-  conn.query('INSERT INTO todolist (completed, text) VALUES ("'+req.body.completed+'","'+req.body.text+'")', function(err, rows){
-    conn.query('SELECT * FROM todolist', function (err, rows) {
-    if (err) {
-        console.log('hiba', err);
-    } else {
-      response = rows
-      console.log(response);
-      }
-  res.send(response)
-    })
-  });
+  if (req.body.text !== undefined) {
+    conn.query('INSERT INTO todolist (completed, text) VALUES ("'+req.body.completed+'","'+req.body.text+'")', function(err, rows){
+      conn.query('SELECT * FROM todolist', function (err, rows) {
+      if (err) {
+          console.log('hiba', err);
+      } else {
+        response = rows
+        console.log(response);
+        }
+    res.send(response)
+      })
+    });
+  }
 });
 
 app.listen(3000, function(){
