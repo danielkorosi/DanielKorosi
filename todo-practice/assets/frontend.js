@@ -1,6 +1,6 @@
 'use strict';
 var listBox = document.querySelector('.list-elements');
-var button = document.querySelector('button');
+var addButton = document.querySelector('.button');
 
 var ajax = function(method, url, callback) {
   var xhr = new XMLHttpRequest();
@@ -18,7 +18,6 @@ var ajax = function(method, url, callback) {
               var response = JSON.parse(xhr.response);
               console.log(response);
                 callback(response);
-
           } else {
             console.log('error:' + xhr.status);
           }
@@ -32,6 +31,23 @@ var ajax = function(method, url, callback) {
     xhr.send();
   }
 };
+
+var ajaxDelete = function(url, id) {
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('DELETE', url+id, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function() {
+      if (xhr.status === 200) {
+              var response = JSON.parse(xhr.response);
+              console.log(response);
+          } else {
+            console.log('error:' + xhr.status);
+          }
+  };
+    xhr.send();
+};
+
 
 var display = function(data) {
     listBox.innerHTML = '';
@@ -48,15 +64,21 @@ var display = function(data) {
       var trashIcon = document.createElement('div');
       trashIcon.className = 'trash-icon';
       itemBox.appendChild(trashIcon);
-      var doneField = document.createElement('div');
-      doneField.className = 'doneField';
-      itemBox.appendChild(doneField);
+      trashIcon.addEventListener('click', function() {
+        ajaxDelete('http://localhost:3000/todos/', el.id)
+        listBox.removeChild(itemBox);
+      })
+
+      var emptyField = document.createElement('div');
+      emptyField.className = 'empty-field';
+      itemBox.appendChild(emptyField);
     })
 };
 
+
 ajax('GET', 'http://localhost:3000/todos', display);
 
-button.addEventListener('click', function() {
+addButton.addEventListener('click', function() {
     ajax('POST', 'http://localhost:3000/todos', display);
   });
 

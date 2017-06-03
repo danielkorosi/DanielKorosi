@@ -62,9 +62,23 @@ app.post('/todos', function(req, res) {
         }
     res.send(response)
       })
-    });
+    })
   }
 });
+
+app.delete('/todos/:id', function(req, res) {
+  conn.query('DELETE FROM todolist WHERE id = "'+req.params.id+'"', function(err, rows){
+    conn.query('SELECT * FROM todolist', function(err, rows){
+      if (err) {
+          console.log('hiba', err);
+      } else {
+        console.log(rows);
+      }
+    res.send(rows)
+    })
+});
+});
+
 
 app.listen(3000, function(){
     console.log('server is running');
