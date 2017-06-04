@@ -97,15 +97,18 @@ main {
   background-repeat: no-repeat;
 }
 
-.empty-field {
+.toggle {
   height: 20px;
   width: 20px;
   background: url('empty.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-/*.button-text {
-	font-family: Lato-Regular, sans-serif;
-	font-size: 26px;
-	color: #ffffff;
-}*/
+
+.toggle-on {
+  height: 20px;
+  width: 20px;
+  background: url('tick-inside-circle.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}

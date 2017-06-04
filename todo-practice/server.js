@@ -60,7 +60,7 @@ app.post('/todos', function(req, res) {
         response = rows
         console.log(response);
         }
-    res.send(response)
+      res.send(response)
       })
     })
   }
@@ -79,6 +79,19 @@ app.delete('/todos/:id', function(req, res) {
 });
 });
 
+app.put('/todos/:id', function(req, res) {
+    conn.query('UPDATE todolist SET completed = "'+req.body.completed+'"WHERE id = "'+req.params.id+'"', function(err, rows){
+      conn.query('SELECT * FROM todolist', function (err, rows) {
+      if (err) {
+          console.log('hiba', err);
+      } else {
+        response = rows
+        console.log(response);
+        }
+      res.send(response)
+      })
+    })
+});
 
 app.listen(3000, function(){
     console.log('server is running');

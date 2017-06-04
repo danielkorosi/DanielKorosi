@@ -5,7 +5,6 @@ var addButton = document.querySelector('.button');
 var ajax = function(method, url, callback) {
   var xhr = new XMLHttpRequest();
   var inputText = document.querySelector('input').value;
-
   var message = {
     text: inputText,
     completed: false
@@ -24,17 +23,35 @@ var ajax = function(method, url, callback) {
   };
 
   if (message.text) {
-    xhr.send(JSON.stringify(message))
     console.log('message exist');
+    xhr.send(JSON.stringify(message));
   } else {
     console.log('message does not exist');
     xhr.send();
   }
 };
 
+var ajaxPut = function(url, callback, id) {
+  var xhr = new XMLHttpRequest();
+  var message = {
+    completed: true
+  };
+  xhr.open('PUT', url+id, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function() {
+      if (xhr.status === 200) {
+              var response = JSON.parse(xhr.response);
+              console.log(response);
+              callback(response);
+          } else {
+            console.log('error:' + xhr.status);
+          }
+  };
+  xhr.send(JSON.stringify(message));
+};
+
 var ajaxDelete = function(url, id) {
   var xhr = new XMLHttpRequest();
-
   xhr.open('DELETE', url+id, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function() {
@@ -45,7 +62,7 @@ var ajaxDelete = function(url, id) {
             console.log('error:' + xhr.status);
           }
   };
-    xhr.send();
+  xhr.send();
 };
 
 
@@ -69,19 +86,22 @@ var display = function(data) {
         listBox.removeChild(itemBox);
       })
 
-      var emptyField = document.createElement('div');
-      emptyField.className = 'empty-field';
-      itemBox.appendChild(emptyField);
+      var toggle = document.createElement('div');
+      itemBox.appendChild(toggle);
+      if (el.completed === 'false') {
+          toggle.className = 'toggle';
+      } else {
+          toggle.className = 'toggle-on';
+      }
+
+      toggle.addEventListener('click', function() {
+        ajaxPut('http://localhost:3000/todos/', display, el.id);
+      })
     })
 };
 
-
-ajax('GET', 'http://localhost:3000/todos', display);
+ajax('GET','http://localhost:3000/todos', display);
 
 addButton.addEventListener('click', function() {
     ajax('POST', 'http://localhost:3000/todos', display);
   });
-
-
-
-//ajax('GET', 'http://localhost:3000/todos/1');
