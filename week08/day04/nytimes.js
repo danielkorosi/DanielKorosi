@@ -1,7 +1,7 @@
 var request = new XMLHttpRequest();
 
 request.open('GET', 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=apollo+11&api_key=0e316cc3d899414ab623037473ae6466', true);
-request.send(null);
+request.send();
 
 var article = document.querySelector('article');
 
@@ -30,6 +30,7 @@ request.onreadystatechange = function () {
 
       var linkContainer = document.createElement('li');
       details.appendChild(linkContainer);
+
       var permalink = document.createElement('a');
       permalink.textContent = 'click for the article';
       permalink.setAttribute('href', el.web_url)

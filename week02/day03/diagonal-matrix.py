@@ -10,8 +10,9 @@
 
 x = 4
 matrix = [[ 0 for i in range(x)] for j in range(x)]
-for i in range(4):
-    for j in range(4):
+
+for i in range(x):
+    for j in range(x):
         if i == j:
             matrix[i][j] = 1
 for i in matrix:

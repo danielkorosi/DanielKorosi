@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel= "stylesheet" href="form-style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+<body>
+  <form class="" action="index.html" method="post">
+    <header>Profil</header>
+    <div class="columns">
+      <div class="personal">
+        <h2>Személyes</h2>
+        <h3>Név</h3>
+        <input type="text" name="name" value=""/>
+        <div class="age-gender">
+          <div><h3>Születési éved</h3>
+          <input type="text" name="birthdate" value=""/>
+          </div>
+          <div><h3>Nemed</h3>
+          <div class="gender">
+            <input type="radio" name="gender" id=nő value=""/>
+            <label for="nő">nő</label>
+            <input type="radio" name="gender" id=férfi value=""/>
+            <label for="férfi">férfi</label>
+          </div></div>
+        </div>
+
+        <h3>Milyen márkákat szeretsz?</h3>
+        <div class="brands">
+          <div>
+            <div>
+              <input type="checkbox" name="brand" id=Adidas value=""/>
+              <label for="Adidas">Adidas</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Apple value=""/>
+              <label for="Apple">Apple</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Coca-Cola value=""/>
+              <label for="Cola-Cola">Coca-Cola</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Mazda value=""/>
+              <label for="Mazda">Mazda</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Nike value=""/>
+              <label for="Nike">Nike</label>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <input type="checkbox" name="brand" id=Opel value=""/>
+              <label for="Opel">Opel</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Ray-Ban value=""/>
+              <label for="Ray-Ban">Ray-Ban</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Starbucks value=""/>
+              <label for="Starbucks">Starbucks</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Tesla value=""/>
+              <label for="Tesla">Tesla</label>
+            </div>
+            <div>
+              <input type="checkbox" name="brand" id=Adidas value=""/>
+              <label for="Adidas">Adidas</label>
+            </div>
+          </div>
+        </div>
+        <p>Többet is választhatsz!</p>
+      </div>
+
+      <div class="contact">
+        <h2>Kapcsolat</h2>
+        <h3>Telefonszám</h3>
+        <input type="text" name="tel" value=""/>
+        <h3>Email-cím</h3>
+        <input type="text" name="email" value=""/>
+        <h3>Facebook profilod</h3>
+        <input type="text" name="facebook" value=""/>
+        <h3>Twitter profilod</h3>
+        <input type="text" name="twitter" value=""/>
+        <h3>Milyen házban laksz?</h3>
+        <input type="text" name="house" value=""/>
+      </div>
+    </div>
+    <div class='intro-cv'>
+      <h3>Bemutatkozás</h3>
+      <input type="text" name="intro" value=""/>
+      <h3>CV feltöltése</h3>
+      <button type="button" name="cv" id=cv></button>
+      <label for="cv">Elfogadom a felhasználási feltételeket</label>
+    </div>
+    <div class="submit-delete">
+      <button type="button" name="button" id=save></button>
+      <button type="button" name="button" id=delete></button>
+    </div>
+  </form>
+</body>
+
+</html>

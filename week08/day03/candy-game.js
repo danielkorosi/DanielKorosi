@@ -7,31 +7,33 @@
 //If you press the "make candy rain" button, the candy generation should speed up 10x
 
 var candyButton = document.querySelector('.create-candies');
-candyButton.addEventListener('click', countCandy);
+var lollyButton = document.querySelector('.buy-lollypops');
+var lollyIcons = document.querySelector('.lollypops');
 
 var numCandy = document.querySelector('dl .candies');
 var count = 0;
+
+candyButton.addEventListener('click', countCandy);
+lollyButton.addEventListener('click', buyLollypop);
 
 function countCandy() {
   count += 1;
   numCandy.innerHTML = count;
 }
 
-var lollyButton = document.querySelector('.buy-lollypops');
-var lollyIcons = document.querySelector('.lollypops');
-lollyButton.addEventListener('click', buyLollypop)
-
 function buyLollypop() {
-  if (count >= 100){
+  if (count >= 10){
     lollyIcons.innerHTML += '🍭';
-    count -= 100;
+    count -= 10;
     numCandy.innerHTML = count;
   }
 }
 
 function candyForLolly() {
   if (lollyIcons.textContent.length >= 20) {
-    countCandy();
+    var lolly = Math.floor(lollyIcons.innerHTML.length/2)/10);
+    count += lolly;
+    numCandy.innerHTML = count;
   }
 }
 

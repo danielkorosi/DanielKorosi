@@ -8,3 +8,10 @@ def total_ears(n):
         return 2
 
 print(total_ears(13))
+
+def x(n):
+    r=0
+    for i in range(n):
+        r+=2
+    return r
+print(x(13))

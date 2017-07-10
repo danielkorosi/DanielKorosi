@@ -5,4 +5,4 @@ def add(n):
         return n
     else:
         return n + add(n-1)
-print(add(5))
+print(add(4))

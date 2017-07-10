@@ -14,4 +14,4 @@ def decrypt(file_name):
             int_version += i
     return int_version
 
-print(decrypt('encoded-lines.txt'))
+print(decrypt("encoded-lines.txt"))

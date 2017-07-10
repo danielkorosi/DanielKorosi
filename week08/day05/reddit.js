@@ -3,15 +3,13 @@
 function getData(callback) {
   var request = new XMLHttpRequest();
 
-  request.open('GET', 'http://10.27.99.171:8080/posts', true);
+  request.open('GET', 'https://time-radish.glitch.me/posts', true);
   request.setRequestHeader('Accept', 'application/json')
   request.send();
 
   request.onreadystatechange = function () {
    if (request.readyState === 4 && request.status === 200) {
       var resp = JSON.parse(request.response);
-      //console.log(resp);
-
       var docData = resp.posts;
       callback(docData)
     }
@@ -67,12 +65,12 @@ function createPost(docData) {
 
     var time = document.createElement('div');
     time.className = 'time';
-    time.innerHTML = 'here goes the time';
+    time.innerHTML = 'time';
     details.appendChild(time);
 
     var author = document.createElement('div');
     author.className = 'author';
-    author.innerHTML = 'here goes the author name'
+    author.innerHTML = el.owner;
     details.appendChild(author);
 
 
@@ -92,5 +90,4 @@ function createPost(docData) {
 
   })
 }
-
 getData(createPost);

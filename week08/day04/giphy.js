@@ -1,5 +1,5 @@
 var fox = new XMLHttpRequest();
-fox.open('GET', 'http://api.giphy.com/v1/gifs/search?q=fox&api_key=dc6zaTOxFJmzC', true);
+fox.open('GET', 'http://api.giphy.com/v1/gifs/search?q=forrest+gump&api_key=dc6zaTOxFJmzC', true);
 fox.send();
 
 var pictures = document.querySelector('div');

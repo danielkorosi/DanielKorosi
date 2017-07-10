@@ -48,19 +48,23 @@ const queryAllBooks = 'SELECT book_name, aut_name, cate_descrip, pub_name, book_
 
 var table = '<table>';
 
+
 app.get('/allbooks', function get(req, res){
+  var qParams = req.query.params;
   conn.query(queryAllBooks, function(err,rows){
     if (err){
       console.log("para van", err);
-    } else {
-      console.log("Data received from Db:\n");
-      console.log(rows);
-      rows.forEach(function(el) {
-        table += '<tr>' + '<th>'+ el.book_name + '</th>' + '<th>' + el.aut_name + '</th>' + '<th>' + el.cate_descrip + '</th>' + '<th>' + el.pub_name + '</th>' + '<th>' + el.book_price + '</th>' + '</tr>';
-      })
-      table += '</table>';
-      res.send(table);
     }
+    else {
+        console.log("Data received from Db:\n");
+        console.log(rows);
+        rows.forEach(function(el) {
+          table += '<tr>' + '<th>'+ el.book_name + '</th>' + '<th>' + el.aut_name + '</th>' + '<th>' + el.cate_descrip + '</th>' + '<th>' + el.pub_name + '</th>' + '<th>' + el.book_price + '</th>' + '</tr>';
+        })
+        table += '</table>';
+        res.send(table);
+      }
+
   });
 });
 

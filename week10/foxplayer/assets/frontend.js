@@ -5,6 +5,7 @@ var trackList = document.querySelector('.tracks');
 var addNewPlaylist = document.querySelector('.left-add');
 var audio = document.querySelector('audio');
 
+
 function ajaxGet(url, callback) {
     var request = new XMLHttpRequest();
     request.open('GET', url, true);

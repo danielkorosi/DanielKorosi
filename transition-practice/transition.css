@@ -1,0 +1,8 @@
+.text {
+  background-color: red;
+}
+
+.trans {
+  transform: translateX(50px);
+  transition: transform 0.5s 1s;
+}

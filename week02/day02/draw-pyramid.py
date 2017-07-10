@@ -12,5 +12,5 @@
 print("add a number:")
 x = int(input())
 for i in range(x)  :
-    i = ((x-i) * " " + (i * "*") * 2 + "* ")
+    i = ((x-i) * " " + (i * "*") * 2 + "*")
     print(i)

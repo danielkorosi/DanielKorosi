@@ -9,3 +9,10 @@ test('correct number of cards', function(t) {
   t.equal(actual.getLength(), expected);
   t.end();
 });
+
+test('black is royal flush', function(t) {
+  var actual = validator('2H 3D 5S 9C KD','2C 3H 4S 8C AH');
+  var expected = 'Black wins. - with flush';
+  t.equal(actual.getResult(), expected);
+  t.end();
+})

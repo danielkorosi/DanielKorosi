@@ -16,7 +16,7 @@ i = 0
 def rainbow(size, color):
     squere = canvas.create_rectangle(150-size/2, 150-size/2, 150+size/2, 150+size/2, fill = color)
 
-for s in range(300, 0, -10):
+for s in range(300, 0, -20):
     rainbow(s, color[i])
     if i < 6:
         i += 1

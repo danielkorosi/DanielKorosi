@@ -5,7 +5,7 @@ def decrypt(file_name):
     text = text[::-1]
     reversed_order = ''
     reversed_order = reversed_order.join(text)
-    return(reversed_order)
+    return reversed_order
     dcr.close()
 
 print(decrypt('reversed-order.txt'))

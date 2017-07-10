@@ -9,5 +9,20 @@ function addText() {
   body.appendChild(text);
 };
 
-var delay = setTimeout(addText, 2000);
-button.addEventListener('click', delay);
+var clickCounter = 0;
+function clickCount() {
+  clickCounter += 1;
+  if (clickCounter === 3) {
+    addText()
+  }
+}
+
+/*var start
+function delay() {
+  setTimeout(addText, 5000);
+
+}*/
+
+
+button.addEventListener('click', clickCount);
+//button.addEventListener('click', delay);

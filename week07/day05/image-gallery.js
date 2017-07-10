@@ -1,5 +1,4 @@
 'use strict';
-
 var imageData = [
   {
     src: 'img1.jpg',
@@ -40,14 +39,12 @@ function createThumbnails() {
     thumbnailElems.setAttribute('src', el.src);
     thumbnailElems.setAttribute('class', 'thumbnail')
     thumbnailList.appendChild(thumbnailElems);
-    console.log(thumbnailList);
   })
 }
 
 function imageFill() {
   mainPlace.style.backgroundImage = 'url('+imageData[i].src+')';
 };
-
 
 function display(increment) {
   i += increment;
@@ -56,7 +53,7 @@ function display(increment) {
   } else if (i === -1) {
     i = imageData.length-1;
   }
-  imageFill(i)
+imageFill(i)
 }
 
 createThumbnails()

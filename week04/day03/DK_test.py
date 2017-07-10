@@ -1,5 +1,5 @@
 import unittest
-from DK_work import Apples, Sum
+from DK_work import Apples, Sum, Anagram, Sharpie
 
 class TestApples(unittest.TestCase):
     def test_get_apple(self):
@@ -17,6 +17,22 @@ class TestSum(unittest.TestCase):
         sum_nums = Sum()
         self.assertEqual(sum_nums.sum([1]), 1)
 
+class TestAnagram(unittest.TestCase):
+    def test_anagram_if_true(self):
+            anagram = Anagram()
+            self.assertTrue(anagram.anagram('das', 'sad'))
+
+    def test_anagram_if_false(self):
+            anagram = Anagram()
+            self.assertFalse(anagram.anagram('mit', 'tilm'))
+
+class TestSharpie(unittest.TestCase):
+    def test_init(self):
+        sharp = Sharpie('black', 150)
+        self.assertEqual(sharp.ink_amount, 100)
+    def test_use(self):
+        sharp = Sharpie('black', 150)
+        self.assertEqual(sharp.use(), 90)
 
 if __name__ == "__main__":
     unittest.main()

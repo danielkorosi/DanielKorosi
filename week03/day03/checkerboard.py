@@ -9,8 +9,6 @@ canvas.pack()
 x1 = 0
 y1 = 0
 
-#for lines in range(30):
-    #if lines % 2 == 0:
 for lines in range(30):
     x1 = 0
     if lines % 2 == 0:

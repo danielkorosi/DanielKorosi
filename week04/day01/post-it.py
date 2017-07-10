@@ -17,4 +17,4 @@ post3.backgroundColor = 'yellow'
 post3.text = "Superb!"
 post3.textColor = 'green'
 
-print(post1.backgroundColor,  post1.text, post1.textColor)
+print('The background color of the first post is: ' + post1.backgroundColor + ', its text is ' + post1.text+ ' and the colour of the text is ' + post1.textColor)

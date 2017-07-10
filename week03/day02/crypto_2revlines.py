@@ -7,5 +7,5 @@ def decrypt(file_name):
         i = i[::-1]
         reversed_by_line += i
     return reversed_by_line
-    
+    dcr.close()
 print(decrypt('reversed-lines.txt'))

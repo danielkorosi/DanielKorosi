@@ -48,7 +48,7 @@ class Hero():
         self.img_right = ImageTk.PhotoImage(self.right)
         self.left = Image.open('hero-left.png')
         self.img_left = ImageTk.PhotoImage(self.left)
-        self.hero = 0 #but whyyyy
+        self.hero = 0
         self.hero_x = 0
         self.hero_y = 0
 
@@ -119,7 +119,7 @@ class GameLogic():
         if self.counter % 2 == 0:
             if randomizer < 0.25:
                 self.boss.move_boss(self.boss.boss_x, self.boss.boss_y+1, self.m.map_template)
-            if 0.25 < randomizer < 0.5:
+            if 0.25 <= randomizer < 0.5:
                 self.boss.move_boss(self.boss.boss_x, self.boss.boss_y-1, self.m.map_template)
             if 0.5 <= randomizer < 0.75:
                 self.boss.move_boss(self.boss.boss_x+1, self.boss.boss_y, self.m.map_template)

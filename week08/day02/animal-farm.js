@@ -25,19 +25,36 @@ function Farm() {
       console.log("no free places");
     }
   }
+  this.slaughter = function() {
+    var leastHunger = 20000;
+    this.slots.forEach(function(el) {
+      if (leastHunger > el.hunger) {
+        leastHunger = el.hunger;
+      }
+    });
+    //this.slots.forEach(function(x) {
+      //if (leastHunger === x.hunger) {
+        //delete x;
+      // }
+    this.slots.splice(leastHunger, 1)
+    console.log(this.slots);
+
+  }
 }
 
 var farm = new Farm ();
-farm.breed()
-farm.breed()
-farm.breed()
-farm.breed()
-console.log(farm);
-farm.breed()
-console.log(farm);
-farm.breed()
-console.log();
 
+farm.breed();
+farm.breed();
+farm.breed();
+farm.breed();
+//console.log(farm);
+farm.breed();
+//console.log(farm);
+farm.breed();
+//console.log();
+farm.slots[1].eat();
+farm.slaughter()
 
 
 //console.log(farm);

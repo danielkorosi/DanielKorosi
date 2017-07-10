@@ -9,3 +9,11 @@ def factorio(x):
     print(result)
 
 factorio(4)
+
+def factorio(x):
+    result=1
+    for i in range(1, x+1):
+        result = i * result
+    return result
+
+print(factorio(4))

@@ -9,7 +9,7 @@ var ajax = function(method, url, callback) {
     text: inputText,
     completed: false
   };
-
+    
   xhr.open(method, url, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function() {
@@ -25,6 +25,7 @@ var ajax = function(method, url, callback) {
   if (message.text) {
     console.log('message exist');
     xhr.send(JSON.stringify(message));
+
   } else {
     console.log('message does not exist');
     xhr.send();
@@ -48,6 +49,7 @@ var ajaxPut = function(url, callback, id) {
           }
   };
   xhr.send(JSON.stringify(message));
+
 };
 
 var ajaxDelete = function(url, id) {
@@ -68,6 +70,7 @@ var ajaxDelete = function(url, id) {
 
 var display = function(data) {
     listBox.innerHTML = '';
+
     data.forEach(function(el) {
       var itemBox = document.createElement('div')
       itemBox.className = 'itemBox';
@@ -92,6 +95,7 @@ var display = function(data) {
           toggle.className = 'toggle';
       } else {
           toggle.className = 'toggle-on';
+          //toggle.style.color!!!!!!!
       }
 
       toggle.addEventListener('click', function() {

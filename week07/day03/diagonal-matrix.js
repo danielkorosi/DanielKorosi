@@ -18,6 +18,9 @@ for (var i = 0; i < 4; i++) {
   matrix[i] = [];
   for (var j = 0; j<4; j++) {
     matrix[i][j] = 0;
+    if ( i === j) {
+      matrix[i][j] = 1
+    }
   }
 }
 

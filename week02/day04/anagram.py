@@ -14,7 +14,7 @@ def anagram(input_1,input_2):
     for i in input_1_list:
         if input_1_list[z]==input_2_list[z]:
             match = True
-            z = z + 1    
+            z = z + 1
         else:
             match = False
     return match

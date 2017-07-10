@@ -13,7 +13,7 @@ def candy(x):
     candy_number = 0
     for i in x:
         candy_number += i["candies"]
-        return candy_number
+    return candy_number
 print(candy(students))
 
 # create a function that takes a list of students and prints:
@@ -24,5 +24,5 @@ def age(x):
     for i in x:
         if i["candies"] < 5:
             total_age += i['age']
-        return total_age
+    return total_age
 print(age(students))
