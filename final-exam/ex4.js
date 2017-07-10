@@ -5,6 +5,6 @@ function letterCount(word) {
   for (let i = 0; i < word.length; i++) {
     count++
   }
-  return count
+  return (count)
 }
 console.log(letterCount('duck'));

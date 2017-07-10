@@ -1,6 +1,6 @@
 //Create a function that takes a string and splits it to a list of two character strings like: "abcdef" becomes ["ab", "cd", "ef"]
 
-function split2(string) {
+function split(string) {
   let list1 = [];
   let list2 = [];
 
@@ -18,4 +18,4 @@ function split2(string) {
   return list1
 }
 
-console.log(split2('abcdef'));
+console.log(split('abcdef'));
