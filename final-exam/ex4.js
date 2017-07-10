@@ -7,5 +7,4 @@ function letterCount(word) {
   }
   return count
 }
-
 console.log(letterCount('duck'));
